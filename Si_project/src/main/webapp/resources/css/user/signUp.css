@@ -1,0 +1,272 @@
+#signUpContainer{
+  width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+#signUpContainer #selectImg {
+  position: absolute;
+  top: 250px;
+  left: calc(50% - 350px);
+}
+#signUpContainer #selectImg img{
+  width: 280px;
+  height: 280px;
+}
+#signUpContainer #selectImg .type_{
+  display: inline-block;
+}
+#signUpContainer #selectImg .type_ #signUpStd:hover{
+  transform: rotate(-6deg);
+  transition: .5s;
+  cursor: pointer;
+}
+#signUpContainer #selectImg .type_ #signUpProf:hover{
+  transform: rotate(6deg);
+  transition: .5s;
+  cursor: pointer;
+}
+
+#signUpContainer #selectImg .type_ button:active{
+  cursor: pointer;
+  position: relative;
+  top: 5px;
+}
+#signUpContainer #selectImg .type_:not(:first-child){
+  margin-left: 100px;
+}
+#signUpContainer #selectImg .type_ #signUpStd, #signUpProf{
+  border: none;
+  background-color: white;
+}
+
+#signUpContainer .type_ .type_text_style{
+  display: block;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/*회원가입 팝업창*/
+#signUpContainer .modal{
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 111111; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+/* 학생용 로그인 */
+#signUpContainer #signUp_std #signUpForm1{
+  width: 600px;
+  background-color: #fefefe;
+  margin: 2% auto 2% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  position: relative;
+}
+#signUpContainer #signUp_std #signUpForm1 label{
+  display: inline-block;
+  width: 25%;
+  text-align: left;
+  font-weight: bold;
+}
+
+#signUpContainer #signUp_std .imgcontainer{
+  width: 400px;
+  height: 500px;
+  background: rgb(255, 255, 255);
+  padding: 50px 10px 0;
+  text-align: left;
+  margin: 0 auto;
+}
+
+#signUpContainer #signUp_std .imgcontainer .signUp_label{
+  position: relative;
+  margin: 5px 0;
+}
+#signUpContainer #signUp_std .imgcontainer .accent{
+  color: red;
+  display: inline-block;
+  position: absolute;
+  top: 4px;
+  left: 5px;
+}
+/* 아이디  */
+#signUpContainer #signUp_std .idWrap #id_btn {
+  padding: 6px;
+  margin-left: 10px;
+  font-size: 0.8rem;
+  border-radius: 10%;
+  box-shadow: 1px 1px 2px lightgrey;
+  border: none;
+  cursor: pointer;
+
+}
+/*전공*/
+#categorySelect{
+  width: 100px;
+}
+/* 주소 */
+#signUpContainer #signUp_std .imgcontainer .addrWrap{
+  margin-top: 20px;
+}
+#signUpContainer #signUp_std .imgcontainer .addrWrap #sample4_roadAddress, #sample4_detailAddress{
+  margin-left: 104px;
+}
+#signUpContainer #signUp_std .imgcontainer .addrWrap #addrBtn{
+  border: none;
+  border-radius: 10%;
+  box-shadow: 1px 1px 2px lightgrey;
+  font-size: 0.8rem;
+  padding: 5px;
+  margin-left: 3px;
+  cursor: pointer;
+}
+
+
+/* 교수용 로그인 */
+
+#signUpContainer #signUp_prof #signUpForm2{
+  width: 600px;
+  background-color: #fefefe;
+  margin: 2% auto 2% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  position: relative;
+}
+#signUpContainer #signUp_prof #signUpForm2 label{
+  display: inline-block;
+  width: 25%;
+  text-align: left;
+  font-weight: bold;
+}
+
+#signUpContainer #signUp_prof .imgcontainer{
+  width: 400px;
+  height: 500px;
+  background: rgb(255, 255, 255);
+  padding: 50px 10px 0;
+  text-align: left;
+  margin: 0 auto;
+}
+
+#signUpContainer #signUp_prof .imgcontainer .signUp_label{
+  position: relative;
+  margin: 5px 0;
+}
+#signUpContainer #signUp_prof .imgcontainer .accent{
+  color: red;
+  display: inline-block;
+  position: absolute;
+  top: 4px;
+  left: 5px;
+}
+/* 아이디  */
+#signUpContainer #signUp_prof .idWrap #id_btn {
+  padding: 6px;
+  margin-left: 10px;
+  font-size: 0.8rem;
+  border-radius: 10%;
+  box-shadow: 1px 1px 2px lightgrey;
+  border: none;
+  cursor: pointer;
+
+}
+/* 주소 */
+#signUpContainer #signUp_prof .imgcontainer .addrWrap{
+  margin-top: 20px;
+}
+#signUpContainer #signUp_prof .imgcontainer .addrWrap #sample4_roadAddress, #sample4_detailAddress{
+  margin-left: 104px;
+}
+#signUpContainer #signUp_prof .imgcontainer .addrWrap #addrBtn{
+  border: none;
+  border-radius: 10%;
+  box-shadow: 1px 1px 2px lightgrey;
+  font-size: 0.8rem;
+  padding: 5px;
+  margin-left: 3px;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)}
+  to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+  from {transform: scale(0)}
+  to {transform: scale(1)}
+}
+
+/* major & check */
+.major_wrap{
+  position: relative;
+  display: inline;
+}
+.major_wrap #category option {
+  width: 100px;
+}
+.major_wrap #major_btn{
+  border: none;
+  margin-left: 10px;
+  border-radius: 10%;
+  box-shadow: 1px 1px 2px lightgrey;
+  padding: 2px 10px;
+  cursor: pointer;
+}
+.check{
+  display: none;
+  border: solid 5px #30a73c;
+  width: 18px;
+  height: 9px;
+  border-top: none;
+  border-right: none;
+  transform: rotate(-45deg);
+  transform-origin: top left;
+  box-shadow: -2px 2px 0 0 rgba(0,0,0,.5);
+  position: absolute;
+  right: -30px;
+  top: 7px;
+}
+
+@keyframes start {
+  0% {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  50% {
+    opacity: 1;
+    width: 0;
+    height: 9px;
+  }
+  100% {
+    width: 18px;
+  }
+}
+
+/* submit button */
+#sbm_btn{
+  position: absolute;
+  background-color: cadetblue;
+  color: white;
+  width: 400px;
+  bottom: 30px;
+  border: none;
+  height: 40px;
+  cursor: pointer;
+}

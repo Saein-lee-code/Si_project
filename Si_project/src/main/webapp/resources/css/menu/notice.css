@@ -1,0 +1,29 @@
+@charset "UTF-8";
+.noticeContainer{
+  width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.noticeContainer .table{
+  border-collapse: collapse;
+  width: 100%;
+  position: absolute;
+  top: 130px;
+}
+.noticeContainer .table th, td{
+  border: 1px solid black;
+  padding: 10px;
+}
+
+/* Search */
+#searchContainer{
+  position: absolute;
+  width: 300px;
+  text-align: center;
+
+}
+
+#searchContainer input[type=text]{
+  border: 1px solid grey;
+}

@@ -1,0 +1,154 @@
+#loginContainer{
+   width: 100%;
+   margin: 0 auto;
+   position: relative;
+}
+#loginContainer #login_bg{
+  height: 100%;
+  width: 100%;
+  float: left;
+  position: fixed;
+  left: -300px;
+}
+#loginContainer .logo{
+  display: block;
+  position: absolute;
+  right: 310px;
+  top: 50px;
+}
+#loginContainer .logo:hover{
+  cursor: pointer;
+}
+#loginContainer #login_wrapper{
+  background: white;
+  width: 510px;
+  height: 100%;
+  position: fixed;
+  right: 0px;
+}
+#loginContainer #login_box{
+  width: 400px;
+  height: 400px;
+  position: absolute;
+  top: 200px;
+  right: 50px;
+  border: 5px solid #d7d7d7;
+}
+
+#loginContainer #login_box #login_box_container{
+  position: absolute;
+  text-align: left;
+  width: calc(100% - 32px);
+  padding: 16px;
+  top: 50px;
+}
+/* id & password */
+#loginContainer #login_box #login_box_container #login_input{
+  display: inline-block;
+  text-transform: capitalize;
+  font-weight: bold;
+  width: 100%;
+}
+#loginContainer #login_box #login_box_container #login_input #remember{
+  font-weight: normal;
+  font-size: 0.9rem;
+  display: block;
+  margin-top: 5px;
+}
+
+#loginContainer #login_box #login_box_container .login_style{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0 12px 0;
+  display: inline-block;
+  border: 1px solid #dfdfdf;
+  box-sizing: border-box;
+
+}
+
+/* stud & prof radiobox */
+#loginContainer #login_box_container #select_user{
+  text-align: right;
+  text-transform: capitalize;
+  font-weight: bold;
+  color: #3c2e29;
+  margin-top: 5px;
+  font-size: 0.9rem;
+}
+
+#loginContainer #login_box_container #select_user input[type=radio]{
+  margin-right: 20px;
+  width: 10px; height: 10px;
+}
+
+/* button container */
+#loginContainer #login_box #btn_container{
+  margin-top: 20px;
+  text-align: right;
+  position:relative;
+}
+#loginContainer #login_box #btn_container input:hover{
+  cursor: pointer;
+}
+/* 로그인 button */
+#loginContainer #login_box #btn_container #login_btn button{
+  background-color: cadetblue;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1rem;
+}
+#loginContainer #login_box #btn_container #login_btn button:hover{
+  opacity: 0.8;
+  transition: .3s;
+}
+
+/* 비밀번호 찾기*/
+#loginContainer #login_box #btn_container #find_pw{
+  display: inline-block;
+  position: absolute;
+  top: 70px;
+  right: 80px;
+}
+#loginContainer #login_box #btn_container #find_pw input{
+  border: none;
+  background-color: white;
+  margin-right: 20px;
+
+}
+#loginContainer #login_box #btn_container #find_pw input:hover{
+  font-weight: bold;
+}
+/* 회원가입 */
+#loginContainer #login_box #btn_container #signUp_btn{
+  display: inline-block;
+  position: absolute;
+  top: 70px;
+  right: 0px;
+}
+#loginContainer #login_box #btn_container #signUp_btn input{
+  border: none;
+  display: inline-block;
+  background-color: white;
+}
+#loginContainer #login_box #btn_container #signUp_btn input:hover{
+  font-weight: bold;
+}
+#loginContainer #login_wrapper #footer{
+  height: 40px;
+  padding: 10px 50px 0px 50px;
+  position: absolute;
+  color: #666666;
+  font-size: 0.78em;
+  bottom: 0;
+}
+#loginContainer #login_wrapper #footer .footer_menu{
+  float: left;
+  margin-right: 30px;
+}
+#loginContainer #login_wrapper #footer a:hover{
+  cursor: pointer;
+}

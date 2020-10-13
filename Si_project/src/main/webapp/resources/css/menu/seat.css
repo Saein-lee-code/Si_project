@@ -1,0 +1,122 @@
+@charset "UTF-8";
+.mainContainer{
+
+}
+
+.chooseContainer {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.btnContainer{
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: auto auto;
+}
+.btnContainer .btn{
+   background-color: #c31a1a;
+   color: white;
+   padding: 1em 1.5em;
+   border-radius: 3px;
+   text-decoration: none;
+   width: 150px;
+   text-align: center;
+   margin: 280px auto;
+   font-size: 1.1rem;
+   cursor: pointer;
+}
+
+.chooseContainer .btn1{
+  margin-right: 160px;
+}
+
+/* 팝업 */
+.modal{
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  transition: .3s;
+}
+
+/* Modal Content */
+.modal-content {
+  width: 800px;
+  height: 600px;
+  position: absolute;
+  top: calc(50% - 400px);
+  left: calc(50% - 400px);
+  background-color: #fefefe;
+  padding: 20px;
+  border: 1px solid #888;
+}
+/* 좌석 배치 */
+.seatContainer{
+  margin: 0 auto;
+  padding: 0 100px;
+}
+#seat1{
+  /* width: 600px; */
+  height: 300px;
+  border: 2px solid lightgrey;
+  margin-bottom: 40px;
+  padding: 20px;
+}
+#seat2{
+  width: 600px;
+  height: 300px;
+  border: 1px solid black;
+  margin-bottom: 40px;
+}
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&subset=devanagari,latin-ext');
+/* 체크박스 지우기 */
+[type="checkbox"]:checked,
+[type="checkbox"]:not(:checked),
+[type="radio"]:checked,
+[type="radio"]:not(:checked){
+	position: absolute;
+	left: -9999px;
+	width: 0;
+	height: 0;
+	visibility: hidden;
+}
+/* 체크박스 css */
+.seat {
+  width: 30px;
+  height: 30px;
+}
+
+.clicked {
+    background-color: red;
+    color: white;
+}
+/* 예약하기 버튼 + 설명 */
+.btnBtn{ border: none; padding: 15px; position: relative; top: -10px; cursor: pointer; }
+.seatContainer pre{ margin-top: 50px; }
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+/* footer */
+.footer{
+  bottom: 0;
+}
