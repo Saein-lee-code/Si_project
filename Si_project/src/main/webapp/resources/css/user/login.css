@@ -105,7 +105,21 @@
   opacity: 0.8;
   transition: .3s;
 }
-
+/* 아이디 찾기 */
+#loginContainer #login_box #btn_container #find_id{
+  display: inline-block;
+  position: absolute;
+  top: 70px;
+  right: 180px;
+}
+#loginContainer #login_box #btn_container #find_id input{
+  border: none;
+  background-color: white;
+  margin-right: 20px;
+}
+#loginContainer #login_box #btn_container #find_id input:hover{
+  font-weight: bold;
+}
 /* 비밀번호 찾기*/
 #loginContainer #login_box #btn_container #find_pw{
   display: inline-block;
@@ -117,7 +131,6 @@
   border: none;
   background-color: white;
   margin-right: 20px;
-
 }
 #loginContainer #login_box #btn_container #find_pw input:hover{
   font-weight: bold;

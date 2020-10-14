@@ -17,36 +17,7 @@
 
   </head>
   <body>
-    <div class="mainContainer">
       <div class="bg"><img src="/res/img/home_bg.jpg" alt=""></div>
-      <div class="navContainer">
-        <nav>
-          <span style="font-size:30px;cursor:pointer" id="menu_bar" onclick="openNav()">&#9776;</span>
-          <span class="greeting">김수인님, 어서오세요!</span>
-          <div class="menu_left">
-            <div id="left_side_nav" class="sidenav">
-              <a href="../mng/mng_home.html"><img class="logo" src="/res/img/logo.png" alt="logo"/></a>
-              <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="font-weight: bold;">&times;</a>
-              <a href="../menu/notice.html">공지사항</a>
-              <a href="../menu/timetable.html">시간표</a>
-              <a href="../menu/mypage.html">마이페이지</a>
-              <a href="../menu/seat.html">열람실예약</a>
-              <a href="../menu/board.html">자유게시판</a>
-              <a href="#">장터</a>
-              <a href="#">장학금신청</a>
-              <a href="/res/user/login.html" class="mg-top-100">로그아웃</a>
-            </div>
-          </div>
-        </div>
-        <!--검색-->
-        <div id="searchContainer">
-          <form action="">
-            <input type="text" placeholder="Search" name="search">
-            <button type="submit"><i class="fa fa-search"></i></button>
-          </form>
-        </div>
-      </nav>
-
       <div class="gridContainer">
         <div class="grid-item">
           <div class="title">공지 사항</div>
@@ -101,9 +72,7 @@
         </div>
       </div>
 
-    </div>
 
-    <!-- js -->
-    <script src="/res/js/mng_js/mng_home.js"></script>
+   
   </body>
 </html>

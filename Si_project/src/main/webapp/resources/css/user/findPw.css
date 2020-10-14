@@ -1,0 +1,49 @@
+@charset "UTF-8";
+/* width: 600 , height: 600*/
+html, body{
+  overflow: hidden;
+}
+.findPwContainer{
+  padding: 20px 20px 0;
+  width: 500px;
+  height: 500px;
+  margin: 40px auto 0;
+  border: 2px solid lightgrey;
+  text-align: center;
+  box-sizing: border-box;
+  position: relative;
+}
+.findPwContainer h1{
+  font-weight: 400;
+}
+.findPwContainer p {
+  margin-bottom: 40px;
+  font-size: 0.9rem;
+}
+
+.findPwContainer input:not([type=submit]){
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px 20px;
+  margin: 5px 0;
+  font-size: 0.9rem;
+  border: 1px solid #dfdfdf;
+}
+
+.findPwContainer input[type=submit]{
+  border: none;
+  width: 100%;
+  color: white;
+  padding: 14px 20px;
+  background-color: #5f9ea0;
+  cursor: pointer;
+  font-size: 1rem;
+  position: absolute;
+  bottom: 20px;
+  left: calc(50% - 228px);
+  width: 456px;
+}
+.findPwContainer input[type=submit]:hover{
+  opacity: .8;
+  transition: .3s;
+}

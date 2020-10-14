@@ -4,7 +4,6 @@
 	<div id="loginContainer">
       <h1 class="hidden">학생 정보 관리시스템 - 로그인</h1>
       <img id="login_bg" src="/res/img/login_bg.jpg" alt="학교사진" />
-
       <div id="login_wrapper">
         <a href="#"><img class="logo" src="/res/img/logo.png" alt="logo"/></a>
         <div id="login_box">
@@ -31,13 +30,18 @@
                 <div id="login_btn">
                   <button type="button" id="loginBtn">Login</button>
                 </div>
+                
+                <div id="find_id">
+                  <a onclick="openFindId()"><input type="button" value="아이디 찾기" /></a>
+                </div>
+                
 
                 <div id="find_pw">
-                  <a href="findPw.html"><input type="button" value="비밀번호 찾기" /></a>
+                  <a onclick="openFindPw()"><input type="button" value="비밀번호 찾기" /></a>
                 </div>
 
                 <div id="signUp_btn">
-                  <a href="signUp.html"><input type="button" value="회원가입" /></a>
+                  <a href="/user/signup"><input type="button" value="회원가입" /></a>
                 </div>
               </div>
             </div>
@@ -52,3 +56,12 @@
     </div>
     <!-- js -->
     <script src="/res/js/user_js/login.js"></script>
+    <script>
+	    var myWindow;
+	    function openFindId() {
+		      myWindow = window.open("/user/findId", "_blank", "resizable=yes,top=300,left=1000, width=600, height=600");
+		}
+	    function openFindPw() {
+	      myWindow = window.open("/user/findPw", "_blank", "resizable=yes,top=300,left=1000, width=600, height=600");
+	    }
+    </script>
