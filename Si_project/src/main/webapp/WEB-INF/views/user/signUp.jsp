@@ -28,7 +28,7 @@
 
         <!-- 학생 회원가입 -->
         <div id="signUp_std" class="modal">
-          <form action="/sign_up.js" id="signUpForm1" class="modal-content animate" method="post">
+          <form action="/user/signup" id="signUpForm1" class="modal-content animate" method="post" onsubmit="return chk()">
             <div class="imgcontainer">
               <h2 class="hidden">회원가입 - 학생</h2>
               <div class="noWrap">
@@ -37,9 +37,11 @@
               </div>
 
               <div class="idWrap">
+                <div id="idChkResult" class="msg"></div>                
+              
                 <label class="signUp_label" for="std_id">아이디</label>
                 <input type="text" name="std_id" value="">
-                <button id="id_btn" type="button">중복 체크</button>
+                <button id="id_btn" type="button" onclick="chkIdStd()">중복 체크</button>
               </div>
 
               <div class="pwWrap">
@@ -51,32 +53,34 @@
               </div>
 
               <div class="nmWrap">
-                <label class="signUp_label" class="signUp_label" for="std_name">이름</label>
-                <input type="text" name="std_name" value=""><br>
+                <label class="signUp_label" class="signUp_label" for="std_nm">이름</label>
+                <input type="text" name="std_nm" value=""><br>
               </div>
 
               <!-- 전공 -->
               <div class="major_wrap">
                 <label class="signUp_label" for="std_mj">전공</label>
-                <select name="std_mj_a" id="category" onchange="makeSubmenu(this.value)">
+                <select name="std_mj" id="category" onchange="makeSubmenu(this.value)">
                   <option value="" disabled selected>-- 대학 --</option>
                   <option>사범대학</option>
                   <option>경영대학</option>
                   <option>공과대학</option>
                 </select>
-                <select name="std_mj_b" id="categorySelect" style="display:none">
+                <select name="std_cs" id="categorySelect" style="display:none">
                   <option value="" disabled selected>-- 전공 --</option>
                   <option></option>
                 </select>
-                <button type="button" id="major_btn" onclick="displaySelected()">확인</button>
-                  <div id="major_result" class="hidden"></div><div class="check"></div>
+                <button type="button" id="major_btn">확인</button>
+                  <input type="hidden" id="std_major" value=""/>
+                  <input type="hidden" id="std_course" value=""/>
+                  <div class="check" id="check_"></div>
               </div>
 
               <br>
 
               <div class="birthWrap">
                 <label class="signUp_label" for="std_birth">생년월일</label>
-                <input type="date" name="std_birth"><br>
+                <input type="date" name="std_birth" id="std_birth"><br>
               </div>
 
 
@@ -87,24 +91,26 @@
 
               <!-- 전화번호 -->
               <div class="telWrap">
-                <label class="signUp_label" for="std_tel">전화번호</label>
-                <select name="std_tel">
+                <label class="signUp_label" for="std_phone">전화번호</label>
+                <select id="std_tel1" name="std_tel1">
                   <option value="010">010</option>
                   <option value="011">011</option>
-                </select> - <input type="tel" size="4"> - <input type="tel" size="4">
+                </select> - <input id="std_tel2" type="tel" size="4"> - <input id="std_tel3" type="tel" size="4">
+                <input type="hidden" id="std_phone" name="std_phone">
               </div>
 
               <!-- 주소 -->
               <div class="addrWrap">
                 <label for="std_addr">주소</label>
                 <input type="text" name="std_zip" id="sample4_postcode" size="6" placeholder="우편번호" readonly>
-                <input type="button" id="addrBtn" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-                <input type="text" name="std_addr1" id="sample4_roadAddress" placeholder="도로명주소">
+                <input type="button" class="addrBtn" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
+                <input type="text" name="std_addr1" id="sample4_roadAddress" placeholder="도로명주소" readonly>
                 <span id="guide" style="color:#999;display:none"></span><br />
                 <input type="text" name="std_addr2" id="sample4_detailAddress" placeholder="상세주소">
+                <input type="hidden" name="std_addr" id="std_addr">
               </div>
 
-              <input id="sbm_btn" type="submit" value="등록">
+              <input class="sbm_btn" type="submit" value="등록">
             </div>
           </form>
         </div>
@@ -115,44 +121,47 @@
             <div class="imgcontainer">
               <h2 class="hidden">회원가입 - 교수</h2>
               <div class="noWrap">
-                <label class="signUp_label" for="pf_no">교수 번호</label>
-                <input type="text" name="pf_no" value=""><br />
+                <label class="signUp_label" for="prof_no">교수 번호</label>
+                <input type="text" name="prof_no" value=""><br />
               </div>
 
               <div class="idWrap">
-                <label class="signUp_label" for="pf_id">아이디</label>
-                <input type="text" name="pf_id" value="">
-                <button id="pfid_btn" type="button">중복 체크</button>
+                <div id="idChkResult2" class="msg"></div>
+                <label class="signUp_label" for="prof_id">아이디</label>
+                <input type="text" name="prof_id" value="">
+                <button id="pfid_btn" type="button" onclick="chkIdProf()">중복 체크</button>
               </div>
 
               <div class="pwWrap">
-                <label class="signUp_label" for="pf_pw">비밀번호</label>
-                <input type="password" name="pf_pw"><br>
+                <label class="signUp_label" for="prof_pw">비밀번호</label>
+                <input type="password" name="prof_pw"><br>
 
-                <label class="signUp_label" for="re_pf_pw">비밀번호확인</label>
-                <input type="password" name="re_pf_pw"><br>
+                <label class="signUp_label" for="re_prof_pw">비밀번호확인</label>
+                <input type="password" name="re_prof_pw"><br>
               </div>
 
               <div class="nmWrap">
-                <label class="signUp_label" class="signUp_label" for="pf_name">이름</label>
-                <input type="text" name="pw_name" value=""><br>
+                <label class="signUp_label" class="signUp_label" for="prof_name">이름</label>
+                <input type="text" name="prof_name" value=""><br>
               </div>
 
               <!-- 전공 -->
               <div class="major_wrap">
-                <label class="signUp_label" for="pf_mj">전공</label>
-                <select name="pf_mj_a" id="category" onchange="makeSubmenu(this.value)">
+                <label class="signUp_label" for="prof_major">전공</label>
+                <select name="prof_major" id="category_p" onchange="makeSubmenu_prof(this.value)">
                   <option value="" disabled selected>-- 대학 --</option>
                   <option>사범대학</option>
                   <option>경영대학</option>
                   <option>공과대학</option>
                 </select>
-                <select name="pf_mj_b" id="categorySelect" style="display:none">
+                <select name="porf_course" id="categorySelect_p" style="display:none">
                   <option value="" disabled selected>-- 전공 --</option>
                   <option></option>
                 </select>
-                <button type="button" id="major_btn" onclick="displaySelected()">확인</button>
-                  <div id="major_result" class="hidden"></div><div class="check"></div>
+                <button type="button" id="major_btn_2">확인</button>
+                   <input type="hidden" id="prof_major" value=""/>
+                   <input type="hidden" id="prof_course" value=""/>
+                   <div class="check" id="check_p"></div>
               </div>
 
               <br>
@@ -180,14 +189,14 @@
               <!-- 주소 -->
               <div class="addrWrap">
                 <label for="">주소</label>
-                <input type="text" name="pf_zip" id="sample4_postcode" size="6" placeholder="우편번호" readonly>
-                <input type="button" id="addrBtn" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-                <input type="text" name="pf_addr1" id="sample4_roadAddress" placeholder="도로명주소">
-                <span id="guide" style="color:#999;display:none"></span><br />
-                <input type="text" name="pf_addr2" id="sample4_detailAddress" placeholder="상세주소">
+                <input type="text" name="pf_zip" id="sample4_postcode_p" size="6" placeholder="우편번호" readonly>
+                <input type="button" class="addrBtn" onclick="sample4_execDaumPostcode_prof()" value="우편번호 찾기"><br>
+                <input type="text" name="pf_addr1" id="sample4_roadAddress_p" placeholder="도로명주소" readonly>
+                <span id="guide2" style="color:#999;display:none"></span><br />
+                <input type="text" name="pf_addr2" id="sample4_detailAddress_p" placeholder="상세주소">
               </div>
 
-              <input id="sbm_btn" type="submit" value="등록">
+              <input class="sbm_btn" type="submit" value="등록">
             </div>
           </form>
         </div>
@@ -195,6 +204,7 @@
     </div><!-- signupContainer -->
 
     <!-- script -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="/res/js/user_js/signUp.js"></script>
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
   </body>

@@ -42,6 +42,14 @@
   padding: 16px;
   top: 50px;
 }
+
+#login_box_container .msg {
+  color: red;
+  position: absolute;
+  top: -20px;
+  font-size: 0.9rem;
+}
+
 /* id & password */
 #loginContainer #login_box #login_box_container #login_input{
   display: inline-block;
@@ -91,7 +99,7 @@
   cursor: pointer;
 }
 /* 로그인 button */
-#loginContainer #login_box #btn_container #login_btn button{
+#loginContainer #login_box #btn_container #login_btn #loginBtn{
   background-color: cadetblue;
   color: white;
   padding: 14px 20px;
@@ -164,4 +172,14 @@
 }
 #loginContainer #login_wrapper #footer a:hover{
   cursor: pointer;
+}
+
+/* 반응형 웹*/
+@media screen and (max-width: 700px){
+	#login_bg{ display: none; transition: .3s; }
+}
+@media screen and (max-height: 700px){
+	#footer{
+		display:none;
+	}
 }

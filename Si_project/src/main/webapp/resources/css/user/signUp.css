@@ -80,7 +80,7 @@
 
 #signUpContainer #signUp_std .imgcontainer{
   width: 400px;
-  height: 500px;
+  height: 600px;
   background: rgb(255, 255, 255);
   padding: 50px 10px 0;
   text-align: left;
@@ -109,8 +109,19 @@
   cursor: pointer;
 
 }
+/* ID 중복체크 o 가능 x 불가능*/
+.ido{
+	color: blueviolet;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+.idx{
+	color: red;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
 /*전공*/
-#categorySelect{
+#categorySelect, #categorySelect_p{
   width: 100px;
 }
 /* 주소 */
@@ -119,8 +130,9 @@
 }
 #signUpContainer #signUp_std .imgcontainer .addrWrap #sample4_roadAddress, #sample4_detailAddress{
   margin-left: 104px;
+  width: 60%;
 }
-#signUpContainer #signUp_std .imgcontainer .addrWrap #addrBtn{
+#signUpContainer #signUp_std .imgcontainer .addrWrap .addrBtn{
   border: none;
   border-radius: 10%;
   box-shadow: 1px 1px 2px lightgrey;
@@ -132,6 +144,15 @@
 
 
 /* 교수용 로그인 */
+#signUpContainer #signUp_prof .idWrap #pfid_btn {
+  padding: 6px;
+  margin-left: 10px;
+  font-size: 0.8rem;
+  border-radius: 10%;
+  box-shadow: 1px 1px 2px lightgrey;
+  border: none;
+  cursor: pointer;
+}
 
 #signUpContainer #signUp_prof #signUpForm2{
   width: 600px;
@@ -149,7 +170,7 @@
 
 #signUpContainer #signUp_prof .imgcontainer{
   width: 400px;
-  height: 500px;
+  height: 600px;
   background: rgb(255, 255, 255);
   padding: 50px 10px 0;
   text-align: left;
@@ -182,10 +203,11 @@
 #signUpContainer #signUp_prof .imgcontainer .addrWrap{
   margin-top: 20px;
 }
-#signUpContainer #signUp_prof .imgcontainer .addrWrap #sample4_roadAddress, #sample4_detailAddress{
+#signUpContainer #signUp_prof .imgcontainer .addrWrap #sample4_roadAddress_p, #sample4_detailAddress_p{
   margin-left: 104px;
+  width: 60%;
 }
-#signUpContainer #signUp_prof .imgcontainer .addrWrap #addrBtn{
+#signUpContainer #signUp_prof .imgcontainer .addrWrap .addrBtn{
   border: none;
   border-radius: 10%;
   box-shadow: 1px 1px 2px lightgrey;
@@ -219,7 +241,7 @@
 .major_wrap #category option {
   width: 100px;
 }
-.major_wrap #major_btn{
+.major_wrap #major_btn, #major_btn_2{
   border: none;
   margin-left: 10px;
   border-radius: 10%;
@@ -260,7 +282,7 @@
 }
 
 /* submit button */
-#sbm_btn{
+.sbm_btn{
   position: absolute;
   background-color: cadetblue;
   color: white;

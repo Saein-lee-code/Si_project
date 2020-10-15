@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.koreait.si.user.UserMapper">
+	<insert id="insStudent" parameterType="StdVO">
+		INSERT INTO t_student
+		(std_no, std_id, std_pw, salt, std_nm, std_major, std_course, std_birth, std_email, std_phone, std_addr, std_zip)
+		VALUES
+		(#{std_no}, #{std_id}, #{std_pw}, #{salt}, #{std_nm}, #{std_major}, #{std_course}, #{std_birth}, #{std_email}, #{std_phone}, #{std_addr}, #{std_zip})
+	</insert>
+	
+	<select id="selStudent" parameterType="StdPARAM" resultType="StdDMI">
+		SELECT i_std, std_id, std_pw, salt
+		FROM t_student
+		WHERE
+		<if test="i_std > 0"> i_std = #{i_std}</if>
+		<if test="std_id != null and std_id != ''"> std_id = #{std_id}</if>		
+	</select>
+	
+	<select id="selProfessor" parameterType="ProfPARAM" resultType="ProfDMI">
+		SELECT i_prof, prof_id, prof_pw, salt
+		FROM t_professor
+		WHERE
+		<if test="i_prof > 0"> i_prof = #{i_prof}</if>
+		<if test="prof_id != null and prof_id != ''"> prof_id = #{prof_id}</if>
+	</select>	
+	
+</mapper>

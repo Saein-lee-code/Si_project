@@ -5,10 +5,11 @@
       <h1 class="hidden">학생 정보 관리시스템 - 로그인</h1>
       <img id="login_bg" src="/res/img/login_bg.jpg" alt="학교사진" />
       <div id="login_wrapper">
-        <a href="#"><img class="logo" src="/res/img/logo.png" alt="logo"/></a>
+        <a href="/user/login"><img class="logo" src="/res/img/logo.png" alt="logo"/></a>
         <div id="login_box">
-          <form id="loginForm" action="/res/js/login.js" method="post">
+          <form id="loginForm" action="/user/login" method="post">
             <div id="login_box_container">
+              <div class="msg">${ data.msg }</div>
               <div id="login_input">
                 <label for="user_id">username</label>
                 <input type="text" class="login_style" id="user_id" name="user_id" placeholder="Enter Username" required autofocus/><br />
@@ -28,7 +29,7 @@
 
               <div id="btn_container">
                 <div id="login_btn">
-                  <button type="button" id="loginBtn">Login</button>
+                  <button type="submit" id="loginBtn">Login</button>
                 </div>
                 
                 <div id="find_id">

@@ -2,5 +2,14 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0/EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
+		<typeAlias type="com.koreait.si.user.model.StdVO" alias="StdVO" />
+		<typeAlias type="com.koreait.si.user.model.StdDMI" alias="StdDMI" />
+		<typeAlias type="com.koreait.si.user.model.StdPARAM" alias="StdPARAM" />
+		
+		<typeAlias type="com.koreait.si.user.model.ProfVO" alias="ProfVO" />
+		<typeAlias type="com.koreait.si.user.model.ProfDMI" alias="ProfDMI" />
+		<typeAlias type="com.koreait.si.user.model.ProfPARAM" alias="ProfPARAM" />
+		
+		<typeAlias type="com.koreait.si.mng.model.MajorVO" alias="MajorVO" />
 	</typeAliases>
 </configuration>
