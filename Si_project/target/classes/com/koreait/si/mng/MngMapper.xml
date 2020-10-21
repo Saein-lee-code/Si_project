@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.koreait.si.mng.MngMapper">
+	<insert id="insSeat" parameterType="SeatVO">
+		INSERT INTO t_seat
+		(seat_info, std_no)
+		VALUES
+		(#{seat_info}, #{std_no})
+	</insert>
+	<select id="selSeat" parameterType="SeatPARAM" resultType="SeatDMI">
+		SELECT A.std_no, A.std_nm, B.seat_info, B.s_dt, B.o_dt
+		FROM t_student A
+		LEFT JOIN t_seat B
+		ON A.std_no = B.std_no
+		WHERE A.std_no = #{std_no};
+	</select>
+</mapper>

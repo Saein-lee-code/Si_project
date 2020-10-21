@@ -15,7 +15,7 @@ var idChkResult2 = document.getElementById('idChkResult2')
 // 학생
 // 주소찾기
 //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
-  function sample4_execDaumPostcode() {
+function sample4_execDaumPostcode() {
       new daum.Postcode({
           oncomplete: function(data) {
               // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
@@ -107,16 +107,10 @@ major_btn_2.addEventListener("click", function(){
  
 
 function resetSelection(){
-  signUpForm1.reset();
+	signUpForm1.reset();
 	signUpForm2.reset();
 }
 
-// 전화번호
-function chk(){	
-	std_phone.value = std_tel1.options[std_tel1.selectedIndex].value + std_tel2.value + std_tel3.value;
-	std_addr.value = sample4_roadAddress.value +" " + sample4_detailAddress.value;
-	return true;
-}
 
 //교수
 // 주소찾기
@@ -218,8 +212,8 @@ window.onclick = function(event) {
         sample4_roadAddress_p.value = "";
         sample4_detailAddress_p.value = "";        
         categorySelect_p.style.display="none"
-		idChkResult.style.display = "none";
-		idChkResult2.style.display = "none";
+		idChkResult.setAttribute("class", "hidden");
+		idChkResult2.setAttribute("class", "hidden");
 		
 		sample4_roadAddress.value = "";
         sample4_detailAddress.value = "";
@@ -230,40 +224,131 @@ window.onclick = function(event) {
 }
 
 
-// 아이디 중복체크
+/* 
+
+아이디 체크
+영문자 시작 + 숫자 조합
+4자 이상 8자이하
+
+*/
 // 학생
+var idReg = /^[a-zA-Z]+[a-z0-9A-Z]{3,19}$/g;
+var formStd = document.formStd
+var formProf = document.formProf
+
 function chkIdStd() {
-	const std_id = signUpForm1.std_id.value	
-	console.log("std_id: " + std_id)		
-	axios.post('/user/ajaxIdChkStd', {
-		std_id: std_id
-	}).then(function(res) {
-		console.log(res)
-		if(res.data == '2') { //아이디 없음
-			idChkResult.setAttribute("class","idChkResult ido");
-			idChkResult.innerText = '사용할 수 있는 아이디입니다.'			
-		} else if(res.data == '3') { //아이디 중복됨
-			idChkResult.setAttribute("class", "idChkResult idx");
-			idChkResult.innerText = '이미 사용중입니다.'
-		}
-	})
+	const std_id = signUpForm1.std_id.value
+	// 아이디가 최소 4자 이상이여야 함	
+	if(std_id.length == 0){
+		alert("아이디를 입력해 주세요.")
+	}else if((std_id.length < 4 && std_id.length > 8) || !idReg.test(std_id)){		
+		alert("아이디는 영소문자로 시작하는 4자 이상 8자 이하의 영문자 또는 숫자이어야 합니다.")
+	}else{
+		axios.post('/user/ajaxIdChkStd', {
+			std_id: std_id
+		}).then(function(res) {
+			if(res.data == '2') { //아이디 없음
+				idChkResult.setAttribute("class","idChkResult ido");
+				idChkResult.style.display = "block";
+				idChkResult.innerText = '사용할 수 있는 아이디입니다.'			
+			} else if(res.data == '3') { //아이디 중복됨
+				idChkResult.setAttribute("class", "idChkResult idx");
+				idChkResult.innerText = '이미 사용중입니다.'
+			}
+		})	
+	}		
 }
 
 // 교수
 function chkIdProf() {
-	const prof_id = signUpForm2.prof_id.value	
-	console.log("prof_id: " + prof_id)		
-	axios.post('/user/ajaxIdChkProf', {
-		prof_id: prof_id
-	}).then(function(res) {
-		console.log(res)
-		if(res.data == '2') { //아이디 없음
-			idChkResult2.setAttribute("class","idChkResult ido");
-			idChkResult2.innerText = '사용할 수 있는 아이디입니다.'			
-		} else if(res.data == '3') { //아이디 중복됨
-			idChkResult2.setAttribute("class", "idChkResult idx");
-			idChkResult2.innerText = '이미 사용중입니다.'
-		}
-	})
+	const prof_id = signUpForm2.prof_id.value
+	if(prof_id.length == 0){
+		alert("아이디를 입력해 주세요.")
+	}else if((prof_id.length > 3 && prof_id.length < 9) && idReg.test(prof_id)){
+			axios.post('/user/ajaxIdChkProf', {
+			prof_id: prof_id
+		}).then(function(res) {
+			if(res.data == '2') { //아이디 없음
+				idChkResult2.setAttribute("class","idChkResult2 ido");
+				idChkResult2.style.display = "block";
+				idChkResult2.innerText = '사용할 수 있는 아이디입니다.'			
+			} else if(res.data == '3') { //아이디 중복됨
+				idChkResult2.setAttribute("class", "idChkResult2 idx");
+				idChkResult2.innerText = '이미 사용중입니다.'
+			}
+		})
+	}else{
+		alert("아이디는 영소문자로 시작하는 4자 이상 8자 이하의 영문자 또는 숫자이어야 합니다.")
+	}	
 }
 
+
+/* 
+
+sumbit할때 실행되는 Method
+- 전화번호 & 주소 합쳐서 전송  
+
+
+*/
+
+function chkStd(){	
+	if(isNaN(formStd.std_no.value)){
+		alert("학생번호는 숫자로만 입력해 주세요.")
+		return false;
+	}else if(formStd.std_pw.value.length < 3 || formStd.std_pw.value.length > 8){		
+		alert("비밀번호는 4자이상 8자이하로 설정해 주세요.")
+		return false;
+	}else if(formStd.std_pw.value != formStd.re_std_pw.value){
+		alert("비밀번호를 다시 확인해 주세요.")
+		return false;		
+	}else if(formStd.std_no.value == "" || formStd.std_id.value == "" || formStd.std_pw.value == ""
+	|| formStd.re_std_pw.value == "" || formStd.std_nm.value == "" || formStd.std_mj.value == ""
+	|| formStd.std_cs.value == "" || formStd.std_birth.value == "" || formStd.std_email.value == ""
+	|| formStd.std_tel1.value == "" || formStd.std_tel2.value == "" || formStd.std_tel3.value == ""
+	|| formStd.std_zip.value == "" || formStd.std_addr2.value == "")
+	{
+		alert("입력하지 않은 칸이 있습니다. 확인해 주세요.")		
+		return false;		
+	}else{		
+	// 빈칸이 없는경우
+		
+		std_phone.value = std_tel1.options[std_tel1.selectedIndex].value + std_tel2.value + std_tel3.value;
+		std_addr.value = sample4_roadAddress.value + " " + sample4_detailAddress.value;
+		return true;	
+	}	
+}
+
+function chkProf(){
+	if(isNaN(formProf.prof_no.value)){
+		alert("교수번호는 숫자로만 입력해 주세요.")
+		return false;
+	}else if(formProf.prof_pw.value.length < 3 || formProf.prof_pw.value.length > 8){
+		alert("비밀번호는 4자이상 8자이하로 설정해 주세요.")
+		return false;
+	}else if(formProf.prof_pw.value != formProf.re_prof_pw.value){
+		alert("비밀번호를 다시 확인해 주세요.")
+		return false;		
+	}else if(formProf.prof_no.value == "" || formProf.prof_id.value == "" || formProf.prof_pw.value == ""
+	|| formProf.re_prof_pw.value == "" || formProf.prof_nm.value == "" || formProf.prof_mj.value == ""
+	|| formProf.prof_cs.value == "" || formProf.prof_birth.value == "" || formProf.prof_email.value == ""
+	|| formProf.pf_tel1.value == "" || formProf.pf_tel2.value == "" || formProf.pf_tel3.value == ""
+	|| formProf.prof_zip.value == "" || formProf.pf_addr2.value == "")
+	{
+		alert("입력하지 않은 칸이 있습니다. 확인해 주세요.")		
+		return false;	 
+	}else{	
+		prof_phone.value = pf_tel1.options[pf_tel1.selectedIndex].value + pf_tel2.value + pf_tel3.value;
+		prof_addr.value = sample4_roadAddress_p.value + " " + sample4_detailAddress_p.value;
+		
+		return true;
+	}
+}
+
+
+
+/* 엔터키 이벤트 제거 */
+document.addEventListener('keydown', function(event) {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+  };
+}, true);

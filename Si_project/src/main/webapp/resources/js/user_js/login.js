@@ -1,3 +1,7 @@
+/* Change Form */
+
+
+let loginForm = document.getElementById('loginForm')
 let chk_type = document.getElementsByClassName('chk_type')
 let user_type = document.getElementsByName('user_type')
 let userType = null
@@ -21,11 +25,22 @@ loginBtn.addEventListener("click", function(){
 
 	if(userType == '학생'){
 		user_id.setAttribute('name', 'std_id');
-		user_pw.setAttribute('name', 'std_pw');    	
+		user_pw.setAttribute('name', 'std_pw'); 
+		loginForm.action = "/user/loginStd"   	
 	}else if(userType == '교수'){
 		user_id.setAttribute('name', 'prof_id');
-		user_pw.setAttribute('name', 'prof_pw');		
+		user_pw.setAttribute('name', 'prof_pw');
+		loginForm.action = "/user/loginProf"
 	}
   }// else
 })
+
+/* 아이디 & 비밀번호 찾기 새창 띄우기 */
+var myWindow;
+function openFindId() {
+      myWindow = window.open("/user/findId", "_blank", "resizable=yes,top=300,left=1000, width=600, height=600");
+}
+function openFindPw() {
+  myWindow = window.open("/user/findPw", "_blank", "resizable=yes,top=300,left=1000, width=600, height=600");
+}
 

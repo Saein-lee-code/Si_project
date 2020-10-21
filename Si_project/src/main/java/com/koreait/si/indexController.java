@@ -1,8 +1,11 @@
 package com.koreait.si;
 
 import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+@Controller
 public class indexController {
 	@RequestMapping("/")
 	// annotation  ()안의 경로와 컨트롤러를 매핑해줌.

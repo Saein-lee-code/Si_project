@@ -13,6 +13,15 @@ public interface UserMapper {
 	
 	StdDMI selStudent(StdPARAM p);
 	ProfDMI selProfessor(ProfPARAM p);
+	StdDMI selStdId(StdPARAM std_param);
+	ProfDMI selProfId(ProfPARAM prof_param);
+	// 비밀번호 찾기 위한 select 문 (id, name, email)
+	StdDMI findStdPw(StdPARAM std_param); 
+	ProfDMI findProfPw(ProfPARAM prof_param);
 
-		
+
+	
+	int updateStdPw(StdPARAM std_param);
+	int updateProfPw(ProfPARAM prof_param);
 }
+	

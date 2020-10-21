@@ -1,11 +1,10 @@
 @charset "UTF-8";
-.mainContainer{
 
-}
 
 .chooseContainer {
   width: 1200px;
   margin: 0 auto;
+  height: 700px;
 }
 
 .btnContainer{
@@ -27,11 +26,8 @@
    cursor: pointer;
 }
 
-.chooseContainer .btn1{
-  margin-right: 160px;
-}
 
-/* 팝업 */
+/* 팝업 예약창*/
 .modal{
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
@@ -58,6 +54,12 @@
   padding: 20px;
   border: 1px solid #888;
 }
+.modal-title{
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
 /* 좌석 배치 */
 .seatContainer{
   margin: 0 auto;
@@ -69,6 +71,9 @@
   border: 2px solid lightgrey;
   margin-bottom: 40px;
   padding: 20px;
+}
+#seat1 .seat{
+  width: 8%;
 }
 #seat2{
   width: 600px;
@@ -99,24 +104,64 @@
     color: white;
 }
 /* 예약하기 버튼 + 설명 */
-.btnBtn{ border: none; padding: 15px; position: relative; top: -10px; cursor: pointer; }
-.seatContainer pre{ margin-top: 50px; }
-
-/* The Close Button */
-.close {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
+.btnBtn{ border: none; padding: 15px; position: relative;
+    top: 20px; cursor: pointer;
+    font-size: 0.9rem;
+    border-radius: 10%;
+    background: cadetblue;
+    color: white;
+   }
+.btnBtn:hover{ opacity: .8; transition: .2s; }
+.seatContainer pre{
+    text-align: left;
+    display: inline-block;
+    position: absolute;
+    left: 30px;
+    bottom: 80px;
 }
 
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
+/* 조회 - 예약확인 */
+.showWrap{
+	width: 300px;
+	margin: 0 auto;
 }
+.showWrap .showContent{
+	position: absolute;
+    top: calc(50% - 200px);
+}
+.showWrap .showContent h2{
+	width:300px;
+}
+.showWrap .showContent table{
+	width: 300px;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	padding: 30px 0;
+}
+.showWrap .showContent .popupBtn{
+	border: none;
+	width: 300px;
+	padding: 20px 10px;
+	margin: 50px auto 0;
+	font-size: 1rem;
+	cursor: pointer;
+	background: cadetblue;
+	color: white;
+}
+.showWrap .showContent .popupBtn:hover{
+	opacity: .8;
+	transition: .3s;
+}
+
+
 /* footer */
 .footer{
   bottom: 0;
+}
+
+
+@media only screen and (max-width: 1350px){
+	.mainContainer {
+	    height: auto;
+	}
 }

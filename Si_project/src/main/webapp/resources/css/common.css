@@ -16,3 +16,10 @@ body{ font-family: 'Noto Sans KR', sans-serif; }
 
 .mg-top-100{ margin-top: 100px; }
 .float-right { float: right; }
+
+.greeting_user{
+	color: white; border-bottom: 1px solid white;
+}
+.greeting_user:hover{
+	font-weight: bold;
+}

@@ -1,58 +1,85 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="ko" dir="ltr">
-  <head>
-    <link rel="stylesheet" href="/res/css/mng/mng_home.css" />
-    <link rel="stylesheet" href="/res/css/menu/seat.css" />
-    <!-- img icon -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--font-->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
-    <!-- search -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  </head>
-  <body>  
-        <!-- 좌석예약 -->
-        <div class="chooseContainer">
-          <h1 class="hidden">열람실예약</h1>
-          <div class="btnContainer">
-            <a id="btn1" class="btn btn1">제 1 열람실</a>
-            <a id="btn2" class="btn">제 2 열람실</a>
-          </div>
-        </div>
-        <!-- 좌석예약 - 팝업 -->
-        <div id="seatModal1" class="modal">
-          <!-- Modal content -->
-          <div class="modal-content">
-            <h2>제 1 열람실</h2>
-            <div class="seatContainer">
-              <div id="seat1">
-              </div>
-              <span>선택한 좌석: B5</span>
-              <input type="button" class="float-right btnBtn" value="예약하기">
-              <pre>
-                * 좌석 선택시, 현재 시간으로부터 2시간까지 예약이 됩니다.
-                * 한 계정당 한 자리만 예약 가능합니다.
-                * 예약 없이 자리사용이 불가능 합니다.
-                * 시스템 에러시 연락 주세요 (tel: 000-000-0000)
-              </pre>
-            </div>
-          </div>
-        </div>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<link rel="stylesheet" href="/res/css/menu/seat.css" />
 
-        <div id="seatModal2" class="modal">
-          <!-- Modal content -->
-          <div class="modal-content">
-            <h2>제 2 열람실</h2>
-            <div id="seat2"></div>
-            <span>선택한 좌석: </span>
-            <input type="button" value="예약하기">
-          </div>
-        </div>
-             
-      <!-- js -->
-      <script src="/res/js/menu_js/notice.js"></script>
-      <script src="/res/js/menu_js/seat.js"></script>
-  </body>
-</html>
+<!-- 좌석예약 -->
+<div class="chooseContainer">		
+	<h1 class="hidden">열람실예약</h1>
+	<div class="btnContainer">
+		<a id="btn_show" class="btn" style="margin-right: 30px;">조회</a>
+		<a id="btn1" class="btn">예약하기</a>            
+	</div>
+</div>
+
+<!--  조회 - 팝업 -->
+<div id="showSeatModal" class="modal">
+	<div class="modal-content">
+		<div class="showWrap">
+			<div class="showContent">				
+				<h2 class="modal-title">좌석 조회</h2>
+				<c:choose>
+					<c:when test="${ data.seat_info == null }">
+						<p style="width:300px; text-align:center; font-size: 1.1rem; margin-top:150px; letter-spacing: 3px;">예약된 정보가 없습니다.</p>
+					</c:when>
+					<c:when test="${ data.seat_info != null }">
+						<div id="showBooking"  style="display:block;">
+							<form id="delSeat" action="/menu/delSeat" method="post">
+								<table id="seat_table"> 
+									<tr>
+										<th>예약자</th>
+										<td>${ data.std_nm }</td>
+									</tr>
+									<tr>
+										<th>좌석</th>
+										<td>${ data.seat_info}</td>
+									</tr>
+									<tr>
+										<th>시작 시간</th>
+										<td>${ data.s_dt }</td>
+									</tr>
+									<tr>
+										<th>종료 시간</th>
+										<td>${ data.o_dt }</td>
+				   					</tr>
+				     			</table>
+				     			<div>       			
+		    						<input id="delBtn" class="popupBtn" type="button" value="삭제">
+		    					</div>
+				     		</form>
+	   					</div>			
+					</c:when>
+ 				</c:choose>
+  			</div>	
+		</div>			
+  	</div>   		
+</div>
+<!-- 좌석예약 - 팝업 -->
+<div id="seatModal1" class="modal">
+  <!-- Modal content -->
+<div class="modal-content">
+  <h2 class="modal-title">예약하기</h2>
+  <div class="seatContainer">
+    <div id="seat1"></div>
+    
+    <form id="booking" action="/mng/insSeat" method="post">
+    	<input type="hidden" name="std_no" value="${ loginUser.std_no }">
+      	<input type="hidden" id="seat_info" name="seat_info" value="">
+         <input type="submit" class="float-right btnBtn" id="bookBtn" value="예약하기">
+      </form>
+      
+      <pre>
+        * 좌석 선택시, 현재 시간으로부터 2시간까지 예약이 됩니다.
+        * 한 계정당 한 자리만 예약 가능합니다.
+        * 예약 없이 자리사용이 불가능 합니다.
+        * 시스템 에러시 연락 주세요 (tel: 000-000-0000)
+      </pre>
+    </div>
+  </div>
+</div>   
+            
+     <!-- js -->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <script src="/res/js/menu_js/notice.js"></script>
+     <script src="/res/js/menu_js/seat.js"></script>
+

@@ -7,22 +7,44 @@ public class StdVO {
    private String std_pw;
    private String std_nm;
    private String salt;
-   private int std_major;
-   private int std_course;
+   private int major_no;
+   private int course_no;
+   private String major_nm;
+   private String course_nm;
    private String std_birth;
    private String std_email;   
    private String std_phone;   
    private String std_addr;
    private String std_zip;
    
+   public String getMajor_nm() {
+	return major_nm;
+}
+public void setMajor_nm(String major_nm) {
+	this.major_nm = major_nm;
+}
+public String getCourse_nm() {
+	return course_nm;
+}
+public void setCourse_nm(String course_nm) {
+	this.course_nm = course_nm;
+}
+	
+
+   public int getCourse_no() {
+	return course_no;
+	}
+	public void setCourse_no(int course_no) {
+		this.course_no = course_no;
+	}
    public String getStd_zip() {
 	return std_zip;
-}
-public void setStd_zip(String std_zip) {
-	this.std_zip = std_zip;
-}
-public int getI_std() {
-		return i_std;
+	}
+	public void setStd_zip(String std_zip) {
+		this.std_zip = std_zip;
+	}
+	public int getI_std() {
+			return i_std;
 	}
 	public void setI_std(int i_std) {
 		this.i_std = i_std;
@@ -57,12 +79,6 @@ public int getI_std() {
 	public void setSalt(String salt) {
 		this.salt = salt;
 	}
-	public int getStd_major() {
-		return std_major;
-	}
-	public void setStd_major(int std_major) {
-		this.std_major = std_major;
-	}
 	public String getStd_birth() {
 		return std_birth;
 	}
@@ -83,17 +99,18 @@ public int getI_std() {
 	public void setStd_addr(String std_addr) {
 		this.std_addr = std_addr;
 	}
-	public int getStd_course() {
-		return std_course;
-	}
-	public void setStd_course(int std_course) {
-		this.std_course = std_course;
-	}
+	
 	public String getStd_phone() {
 		return std_phone;
 	}
 	public void setStd_phone(String std_phone) {
 		this.std_phone = std_phone;
+	}
+	public int getMajor_no() {
+		return major_no;
+	}
+	public void setMajor_no(int major_no) {
+		this.major_no = major_no;
 	}
 
 

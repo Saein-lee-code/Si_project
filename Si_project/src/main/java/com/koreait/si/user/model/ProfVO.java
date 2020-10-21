@@ -7,12 +7,47 @@ public class ProfVO {
    private String prof_pw;
    private String prof_nm;
    private String salt;
-   private int prof_major;
-   private int prof_course;
+   private String prof_email;
+   private String prof_zip;   
+   private int major_no;
+   private int course_no;   
+   private String major_nm;
+	private String course_nm;
    private String prof_birth;
    private String prof_phone;
    private String prof_addr;
    
+   public String getMajor_nm() {
+		return major_nm;
+	}
+	public void setMajor_nm(String major_nm) {
+		this.major_nm = major_nm;
+	}
+	public String getCourse_nm() {
+		return course_nm;
+	}
+	public void setCourse_nm(String course_nm) {
+		this.course_nm = course_nm;
+	}
+	  
+	public String getProf_zip() {
+		return prof_zip;
+	}
+	public void setProf_zip(String prof_zip) {
+		this.prof_zip = prof_zip;
+	}
+	public int getMajor_no() {
+		return major_no;
+	}
+	public void setMajor_no(int major_no) {
+		this.major_no = major_no;
+	}
+	public int getCourse_no() {
+		return course_no;
+	}
+	public void setCourse_no(int course_no) {
+		this.course_no = course_no;
+	}  
    public int getI_prof() {
 	return i_prof;
    }
@@ -48,19 +83,7 @@ public class ProfVO {
 	}
 	public void setSalt(String salt) {
 		this.salt = salt;
-	}
-	public int getProf_major() {
-		return prof_major;
-	}
-	public void setProf_major(int prof_major) {
-		this.prof_major = prof_major;
-	}
-	public int getProf_course() {
-		return prof_course;
-	}
-	public void setProf_course(int prof_course) {
-		this.prof_course = prof_course;
-	}
+	}	
 	public String getProf_birth() {
 		return prof_birth;
 	}
@@ -78,5 +101,11 @@ public class ProfVO {
 	}
 	public void setProf_addr(String prof_addr) {
 		this.prof_addr = prof_addr;
+	}
+	public String getProf_email() {
+		return prof_email;
+	}
+	public void setProf_email(String prof_email) {
+		this.prof_email = prof_email;
 	}
 }

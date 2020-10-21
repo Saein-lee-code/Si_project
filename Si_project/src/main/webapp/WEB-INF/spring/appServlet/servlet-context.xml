@@ -57,4 +57,11 @@
 	</beans:bean>
 	<tx:annotation-driven transaction-manager="transactionManager" />		
 	
+	<!--  Interceptor -->
+	<interceptors>
+		<interceptor>
+			<mapping path="/**"/>
+			<beans:bean class="com.koreait.si.LoginCheckInterceptor" />
+		</interceptor>
+	</interceptors>
 </beans:beans>

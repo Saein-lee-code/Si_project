@@ -3,6 +3,7 @@
 html, body{
   overflow: hidden;
 }
+
 .findIdContainer{
   padding: 20px 20px 0;
   width: 500px;
@@ -13,6 +14,8 @@ html, body{
   box-sizing: border-box;
   position: relative;
 }
+
+
 .findIdContainer h1{
   font-weight: 400;
 }
@@ -21,7 +24,7 @@ html, body{
   font-size: 0.9rem;
 }
 
-.findIdContainer input:not([type=submit]){
+.formWrapper input:not([type=submit]){
   width: 100%;
   box-sizing: border-box;
   padding: 14px 20px;
@@ -30,7 +33,7 @@ html, body{
   border: 1px solid #dfdfdf;
 }
 
-.findIdContainer input[type=submit]{
+.formWrapper input[type=button]{
   border: none;
   margin-top: 50px;
   width: 100%;
@@ -44,9 +47,65 @@ html, body{
   left: calc(50% - 228px);
   width: 456px;
 }
-.findIdContainer input[type=submit]:hover{
+.formWrapper #findIdForm .findIdBtn:hover{
   opacity: .8;
   transition: .3s;
 }
 
+/* 아이디찾기 결과 */
+.showResult{
+	font-size: 1.2rem;
+	font-weight: bold;
+}
+
+/* 학생 교수 toggle button */
+.switch-field{
+	line-height: 34px;
+    font-size: 1.0rem;
+    text-align: left;
+    display: flex;
+	margin-bottom: 36px;
+	overflow: hidden;
+}
+
+.switch-field input {
+	position: absolute !important;
+	clip: rect(0, 0, 0, 0);
+	height: 1px;
+	width: 1px;
+	border: 0;
+	overflow: hidden;
+}
+
+.switch-field label {
+	background-color: #e4e4e4;
+	color: rgba(0, 0, 0, 0.6);
+	font-size: 14px;
+	line-height: 1;
+	text-align: center;
+	padding: 8px 16px;
+	margin-right: -1px;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+	transition: all 0.1s ease-in-out;
+}
+
+.switch-field label:hover {
+	cursor: pointer;
+}
+
+.switch-field input:checked + label {
+	background-color: #a5dc86;
+	box-shadow: none;
+	font-weight: bold;
+	color: black;
+}
+
+.switch-field label:first-of-type {
+	border-radius: 4px 0 0 4px;
+}
+
+.switch-field label:last-of-type {
+	border-radius: 0 4px 4px 0;
+}
 

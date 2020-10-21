@@ -6,8 +6,9 @@
       <img id="login_bg" src="/res/img/login_bg.jpg" alt="학교사진" />
       <div id="login_wrapper">
         <a href="/user/login"><img class="logo" src="/res/img/logo.png" alt="logo"/></a>
+        
         <div id="login_box">
-          <form id="loginForm" action="/user/login" method="post">
+          <form id="loginForm" action="/" method="post">
             <div id="login_box_container">
               <div class="msg">${ data.msg }</div>
               <div id="login_input">
@@ -16,15 +17,17 @@
                 <label for="user_pw">password</label>
                 <input type="password" class="login_style" id="user_pw" name="user_pw" placeholder="Enter Password" required/>
                 <label id="remember">
-                  <input  type="checkbox" checked="checked" name="remember"> Remember me
+                  <input  type="checkbox" value="remember-me" id="remember_me" name="remember"> Remember me
               </label>
               </div>
 
               <div id="select_user">
-                <label for="stud">student</label>
-                <input type="radio" class="chk_type" name="user_type" value="학생" />
-                <label for="stud">professor</label>
-                <input type="radio" class="chk_type" name="user_type" value="교수" />
+                <label for="user_std">student
+                	<input type="radio" id="user_std" class="chk_type" name="user_type" value="학생" checked="checked"/>
+                </label>
+                <label for="user_prof">professor
+                	<input type="radio" id="user_prof" class="chk_type" name="user_type" value="교수" />
+                </label>
               </div>
 
               <div id="btn_container">
@@ -57,12 +60,31 @@
     </div>
     <!-- js -->
     <script src="/res/js/user_js/login.js"></script>
+    <!-- remember me -->
+    <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
     <script>
-	    var myWindow;
-	    function openFindId() {
-		      myWindow = window.open("/user/findId", "_blank", "resizable=yes,top=300,left=1000, width=600, height=600");
-		}
-	    function openFindPw() {
-	      myWindow = window.open("/user/findPw", "_blank", "resizable=yes,top=300,left=1000, width=600, height=600");
-	    }
+    /* remember me */
+	    $(function() {
+	    	if (localStorage.chkbx != '') {
+	    		$('#remember_me').attr('checked', 'checked');
+	    		$('#user_id').val(localStorage.username);
+	    		$('#user_pw').val(localStorage.password);
+	    	} else {
+	            $('#remember_me').removeAttr('checked');
+	    		$('#user_id').val('');
+	    		$('#user_pw').val('');
+	    	}
+	    	$('#remember_me').click(function() {
+	    		if ($('#remember_me').is(':checked')) {
+	    			// save username and password
+	    			localStorage.username = $('#user_id').val();
+	    			localStorage.password = $('#user_pw').val();
+	    			localStorage.chkbx = $('#remember_me').val();
+	    		} else {
+	    			localStorage.username = '';
+	    			localStorage.password = '';
+	    			localStorage.chkbx = '';
+	    		}
+	    	});
+	    });
     </script>

@@ -102,6 +102,7 @@ body {
   overflow: hidden;
 }
 .timetableContainer{
+  height: 900px;
   width: 800px;
   margin: 0 auto;
   height: 100%;

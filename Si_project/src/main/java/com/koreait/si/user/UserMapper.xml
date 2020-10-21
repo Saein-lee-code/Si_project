@@ -3,25 +3,70 @@
 <mapper namespace="com.koreait.si.user.UserMapper">
 	<insert id="insStudent" parameterType="StdVO">
 		INSERT INTO t_student
-		(std_no, std_id, std_pw, salt, std_nm, std_major, std_course, std_birth, std_email, std_phone, std_addr, std_zip)
+		(std_no, std_id, std_pw, salt, std_nm, major_no, course_no, std_birth, std_email, std_phone, std_addr, std_zip)
 		VALUES
-		(#{std_no}, #{std_id}, #{std_pw}, #{salt}, #{std_nm}, #{std_major}, #{std_course}, #{std_birth}, #{std_email}, #{std_phone}, #{std_addr}, #{std_zip})
+		(#{std_no}, #{std_id}, #{std_pw}, #{salt}, #{std_nm}, #{major_no}, #{course_no}, #{std_birth}, #{std_email}, #{std_phone}, #{std_addr}, #{std_zip})
+	</insert>
+	<insert id="insProfessor" parameterType="ProfVO">
+		INSERT INTO t_professor
+		(prof_no, prof_id, prof_pw, salt, prof_nm, major_no, course_no, prof_birth, prof_email, prof_phone, prof_addr, prof_zip)
+		VALUES
+		(#{prof_no}, #{prof_id}, #{prof_pw}, #{salt}, #{prof_nm}, #{major_no}, #{course_no}, #{prof_birth}, #{prof_email}, #{prof_phone}, #{prof_addr}, #{prof_zip})		
 	</insert>
 	
 	<select id="selStudent" parameterType="StdPARAM" resultType="StdDMI">
-		SELECT i_std, std_id, std_pw, salt
-		FROM t_student
+		SELECT i_std, std_no, std_id, std_pw, salt, std_nm, A.major_no, A.course_no, B.major_nm, B.course_nm, std_birth, std_email, std_phone, std_addr, std_zip
+		FROM t_student A
+		LEFT JOIN t_major B
+		ON A.major_no = B.major_no
+		AND A.course_no = B.course_no
 		WHERE
-		<if test="i_std > 0"> i_std = #{i_std}</if>
-		<if test="std_id != null and std_id != ''"> std_id = #{std_id}</if>		
+		<if test="i_std > 0"> A.i_std = #{i_std}</if>
+		<if test="std_id != null and std_id != ''"> A.std_id = #{std_id}</if>		
 	</select>
 	
 	<select id="selProfessor" parameterType="ProfPARAM" resultType="ProfDMI">
-		SELECT i_prof, prof_id, prof_pw, salt
-		FROM t_professor
+		SELECT i_prof, prof_no, prof_id, prof_pw, salt, prof_nm, A.major_no, A.course_no, B.major_nm, B.course_nm, prof_birth, prof_email, prof_phone, prof_addr, prof_zip
+		FROM t_professor A
+		LEFT JOIN t_major B
+		ON A.major_no = B.major_no
+		AND A.course_no = B.course_no
 		WHERE
-		<if test="i_prof > 0"> i_prof = #{i_prof}</if>
-		<if test="prof_id != null and prof_id != ''"> prof_id = #{prof_id}</if>
+		<if test="i_prof > 0"> A.i_prof = #{i_prof}</if>
+		<if test="prof_id != null and prof_id != ''"> A.prof_id = #{prof_id}</if>
 	</select>	
 	
+	<select id="selStdId" parameterType="StdPARAM" resultType="StdDMI">
+		SELECT std_id FROM t_student 
+		WHERE 
+		std_nm = #{std_nm} AND std_email = #{std_email};
+	</select>
+	<select id="selProfId" parameterType="ProfPARAM" resultType="ProfDMI">
+		SELECT prof_id FROM t_professor 
+		WHERE 
+		prof_nm = #{prof_nm} AND prof_email = #{prof_email};
+	</select>
+	<select id="findStdPw" parameterType="StdPARAM" resultType="StdDMI">
+		SELECT std_id, std_nm, std_email, std_pw, salt
+		FROM t_student
+		WHERE
+		std_id = #{std_id} AND std_nm = #{std_nm} AND std_email = #{std_email};
+	</select>
+	<select id="findProfPw" parameterType="ProfPARAM" resultType="ProfDMI">
+		SELECT prof_id, prof_nm, prof_email, prof_pw, salt
+		FROM t_professor
+		WHERE
+		prof_id = #{prof_id} AND prof_nm = #{prof_nm} AND prof_email = #{prof_email};
+	</select>
+	
+	
+	
+	<update id="updateStdPw" parameterType="StdPARAM">
+		UPDATE t_student SET std_pw=#{std_pw}, salt=#{salt}
+		WHERE std_id=#{std_id}
+	</update>
+	<update id="updateProfPw" parameterType="ProfPARAM">
+		UPDATE t_professor SET prof_pw=#{prof_pw}, salt=#{salt}
+		WHERE prof_id=#{prof_id}
+	</update>
 </mapper>

@@ -11,5 +11,10 @@
 		<typeAlias type="com.koreait.si.user.model.ProfPARAM" alias="ProfPARAM" />
 		
 		<typeAlias type="com.koreait.si.mng.model.MajorVO" alias="MajorVO" />
+		
+		<typeAlias type="com.koreait.si.mng.model.SeatVO" alias="SeatVO" />
+		<typeAlias type="com.koreait.si.mng.model.SeatDMI" alias="SeatDMI" />
+		<typeAlias type="com.koreait.si.mng.model.SeatPARAM" alias="SeatPARAM" />		
+			
 	</typeAliases>
 </configuration>

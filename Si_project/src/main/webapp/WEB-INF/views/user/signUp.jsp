@@ -28,12 +28,12 @@
 
         <!-- 학생 회원가입 -->
         <div id="signUp_std" class="modal">
-          <form action="/user/signup" id="signUpForm1" class="modal-content animate" method="post" onsubmit="return chk()">
+          <form action="/user/signupStd" name="formStd" id="signUpForm1" class="modal-content animate" method="post" onsubmit="return chkStd()">
             <div class="imgcontainer">
               <h2 class="hidden">회원가입 - 학생</h2>
               <div class="noWrap">
                 <label class="signUp_label" for="std_no">학생 번호</label>
-                <input type="text" name="std_no" value=""><br />
+                <input type="text" id="std_no" name="std_no" value=""><br />
               </div>
 
               <div class="idWrap">
@@ -71,8 +71,8 @@
                   <option></option>
                 </select>
                 <button type="button" id="major_btn">확인</button>
-                  <input type="hidden" id="std_major" value=""/>
-                  <input type="hidden" id="std_course" value=""/>
+                  <input type="hidden" id="std_major" name="major_no" value=""/>
+                  <input type="hidden" id="std_course" name="course_no" value=""/>
                   <div class="check" id="check_"></div>
               </div>
 
@@ -95,7 +95,7 @@
                 <select id="std_tel1" name="std_tel1">
                   <option value="010">010</option>
                   <option value="011">011</option>
-                </select> - <input id="std_tel2" type="tel" size="4"> - <input id="std_tel3" type="tel" size="4">
+                </select> - <input id="std_tel2" name="std_tel2" type="tel" size="4"> - <input id="std_tel3" name="std_tel3" type="tel" size="4">
                 <input type="hidden" id="std_phone" name="std_phone">
               </div>
 
@@ -115,14 +115,16 @@
           </form>
         </div>
 
+
+
         <!-- 교수 회원가입 -->
         <div id="signUp_prof" class="modal">
-          <form action="/sign_up.js" id="signUpForm2" class="modal-content animate" method="post">
+          <form action="/user/signupProf" name="formProf" id="signUpForm2" class="modal-content animate" method="post"  onsubmit="return chkProf()">
             <div class="imgcontainer">
               <h2 class="hidden">회원가입 - 교수</h2>
               <div class="noWrap">
                 <label class="signUp_label" for="prof_no">교수 번호</label>
-                <input type="text" name="prof_no" value=""><br />
+                <input type="text" id="prof_no" name="prof_no" value=""><br />
               </div>
 
               <div class="idWrap">
@@ -141,59 +143,61 @@
               </div>
 
               <div class="nmWrap">
-                <label class="signUp_label" class="signUp_label" for="prof_name">이름</label>
-                <input type="text" name="prof_name" value=""><br>
+                <label class="signUp_label" class="signUp_label" for="prof_nm">이름</label>
+                <input type="text" name="prof_nm" value=""><br>
               </div>
 
               <!-- 전공 -->
               <div class="major_wrap">
                 <label class="signUp_label" for="prof_major">전공</label>
-                <select name="prof_major" id="category_p" onchange="makeSubmenu_prof(this.value)">
+                <select name="prof_mj" id="category_p" onchange="makeSubmenu_prof(this.value)">
                   <option value="" disabled selected>-- 대학 --</option>
                   <option>사범대학</option>
                   <option>경영대학</option>
                   <option>공과대학</option>
                 </select>
-                <select name="porf_course" id="categorySelect_p" style="display:none">
+                <select name="prof_cs" id="categorySelect_p" style="display:none">
                   <option value="" disabled selected>-- 전공 --</option>
                   <option></option>
                 </select>
                 <button type="button" id="major_btn_2">확인</button>
-                   <input type="hidden" id="prof_major" value=""/>
-                   <input type="hidden" id="prof_course" value=""/>
+                   <input type="hidden" id="prof_major" name="major_no" value=""/>
+                   <input type="hidden" id="prof_course" name="course_no" value=""/>
                    <div class="check" id="check_p"></div>
               </div>
 
               <br>
 
               <div class="birthWrap">
-                <label class="signUp_label" for="pf_birth">생년월일</label>
-                <input type="date" name="pf_birth"><br>
+                <label class="signUp_label" for="prof_birth">생년월일</label>
+                <input type="date" name="prof_birth"><br>
               </div>
 
 
-              <label class="signUp_label" for="pf_email">Email</label>
-              <input type="email" name="pf_email" placeholder="someone@example.com"><br>
+              <label class="signUp_label" for="prof_email">Email</label>
+              <input type="email" name="prof_email" placeholder="someone@example.com"><br>
 
 
 
               <!-- 전화번호 pf_tel_1 + pf_tel_2 + pf_tel_3 -->
               <div class="telWrap">
-                <label class="signUp_label" for="pf_tel_1">전화번호</label>
-                <select name="pf_tel">
+                <label class="signUp_label" for="prof_phone">전화번호</label>
+                <select id="pf_tel1" name="pf_tel1">
                   <option value="010">010</option>
                   <option value="011">011</option>
-                </select> - <input type="tel" name="pf_tel_2" size="4"> - <input type="tel" name="pf_tel_3" size="4">
+                </select> - <input type="tel" id="pf_tel2" size="4"> - <input type="tel" id="pf_tel3" size="4">
+                <input type="hidden" id="prof_phone" name="prof_phone">
               </div>
 
               <!-- 주소 -->
               <div class="addrWrap">
                 <label for="">주소</label>
-                <input type="text" name="pf_zip" id="sample4_postcode_p" size="6" placeholder="우편번호" readonly>
+                <input type="text" name="prof_zip" id="sample4_postcode_p" size="6" placeholder="우편번호" readonly>
                 <input type="button" class="addrBtn" onclick="sample4_execDaumPostcode_prof()" value="우편번호 찾기"><br>
                 <input type="text" name="pf_addr1" id="sample4_roadAddress_p" placeholder="도로명주소" readonly>
                 <span id="guide2" style="color:#999;display:none"></span><br />
                 <input type="text" name="pf_addr2" id="sample4_detailAddress_p" placeholder="상세주소">
+                <input type="hidden" name="prof_addr" id="prof_addr">                
               </div>
 
               <input class="sbm_btn" type="submit" value="등록">
@@ -205,7 +209,7 @@
 
     <!-- script -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="/res/js/user_js/signUp.js"></script>
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script src="/res/js/user_js/signUp.js"></script>
   </body>
 </html>
