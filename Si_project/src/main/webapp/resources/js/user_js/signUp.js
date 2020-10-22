@@ -212,6 +212,11 @@ window.onclick = function(event) {
         sample4_roadAddress_p.value = "";
         sample4_detailAddress_p.value = "";        
         categorySelect_p.style.display="none"
+
+		check_.style.display = "none"
+		check_p.style.display = "none"
+		
+		noChkResult.setAttribute("class", "hidden");
 		idChkResult.setAttribute("class", "hidden");
 		idChkResult2.setAttribute("class", "hidden");
 		
@@ -236,12 +241,32 @@ var idReg = /^[a-zA-Z]+[a-z0-9A-Z]{3,19}$/g;
 var formStd = document.formStd
 var formProf = document.formProf
 
+function chkNoStd(){
+	const std_no = signUpForm1.std_no.value
+	if(std_no.length == 0){ alert('학생번호를 입력해 주세요.')
+	}else{
+		axios.post('/user/ajaxNoChkStd', {
+			std_no: std_no		
+		}).then(function(res){
+			console.log(res)
+			if(res.data == '2') { // 이 번호로 가입된 정보 없음
+				noChkResult.setAttribute("class", "noChkResult ido");
+				noChkResult.style.display = "block";
+				noChkResult.innerText = '가입이 가능한 번호 입니다.'
+			}else if(res.data == '1'){ // 이 번호로 가입된 정보 있음
+				noChkResult.setAttribute("class", "noChkResult idx");
+				noChkResult.innerText = '이미 가입된 번호 입니다.'
+			}
+		})	
+	}
+}
+
 function chkIdStd() {
 	const std_id = signUpForm1.std_id.value
 	// 아이디가 최소 4자 이상이여야 함	
 	if(std_id.length == 0){
 		alert("아이디를 입력해 주세요.")
-	}else if((std_id.length < 4 && std_id.length > 8) || !idReg.test(std_id)){		
+	}else if((std_id.length < 4 && std_id.length > 8) && !idReg.test(std_id)){		
 		alert("아이디는 영소문자로 시작하는 4자 이상 8자 이하의 영문자 또는 숫자이어야 합니다.")
 	}else{
 		axios.post('/user/ajaxIdChkStd', {
@@ -264,8 +289,10 @@ function chkIdProf() {
 	const prof_id = signUpForm2.prof_id.value
 	if(prof_id.length == 0){
 		alert("아이디를 입력해 주세요.")
-	}else if((prof_id.length > 3 && prof_id.length < 9) && idReg.test(prof_id)){
-			axios.post('/user/ajaxIdChkProf', {
+	}else if((prof_id.length < 4 && prof_id.length > 8) && !idReg.test(prof_id)){		
+		alert("아이디는 영소문자로 시작하는 4자 이상 8자 이하의 영문자 또는 숫자이어야 합니다.")
+	}else{
+		axios.post('/user/ajaxIdChkProf', {
 			prof_id: prof_id
 		}).then(function(res) {
 			if(res.data == '2') { //아이디 없음
@@ -277,11 +304,28 @@ function chkIdProf() {
 				idChkResult2.innerText = '이미 사용중입니다.'
 			}
 		})
-	}else{
-		alert("아이디는 영소문자로 시작하는 4자 이상 8자 이하의 영문자 또는 숫자이어야 합니다.")
-	}	
+	}
 }
 
+function chkNoProf(){
+	const prof_no = signUpForm2.prof_no.value
+	if(prof_no.length == 0){ alert('교수번호를 입력해 주세요.')
+	}else{
+		axios.post('/user/ajaxNoChkProf', {
+			prof_no: prof_no		
+		}).then(function(res){
+			console.log(res)
+			if(res.data == '2') { // 이 번호로 가입된 정보 없음
+				noChkResult2.setAttribute("class", "noChkResult ido");
+				noChkResult2.style.display = "block";
+				noChkResult2.innerText = '가입이 가능한 번호 입니다.'
+			}else if(res.data == '1'){ // 이 번호로 가입된 정보 있음
+				noChkResult2.setAttribute("class", "noChkResult idx");
+				noChkResult2.innerText = '이미 가입된 번호 입니다.'
+			}
+		})	
+	}
+}
 
 /* 
 

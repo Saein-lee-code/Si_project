@@ -1,6 +1,8 @@
 package com.koreait.si.mng;
 
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.koreait.si.Const;
 import com.koreait.si.SecurityUtils;
 import com.koreait.si.ViewRef;
+import com.koreait.si.mng.model.SeatDMI;
 import com.koreait.si.mng.model.SeatPARAM;
 
 @Controller
@@ -46,17 +49,26 @@ public class MngController {
 	// 열람실예약
 	@RequestMapping(value="/seat", method = RequestMethod.GET)
 	public String seat(Model model, HttpSession hs, SeatPARAM seat_param) {		
-		seat_param.setStd_no(SecurityUtils.getLoginStdPk(hs));		
+		seat_param.setStd_no(SecurityUtils.getLoginStdPk(hs));	
+		List<SeatDMI> list = service.selAllSeat(seat_param);// 모든 좌석확인
+		
+		hs.setAttribute("list", list);
+	
 		int checkSeat = service.checkSeat(seat_param);
-		if(checkSeat == Const.SUCCESS) {
+		hs.setAttribute("isBooked", checkSeat);
+		// isBooked == 1 >> 예약정보 있음
+		// isBooked == 0 >> 예약정보 없음
+		
+		if(checkSeat == Const.SUCCESS) { // 예약된 좌석정보 받아옴			
 			hs.setAttribute("data", seat_param);
-		}		
+		}else { // 예약된 정보없음
+			hs.setAttribute("data", seat_param);
+		}			
 		model.addAttribute(Const.VIEW, "menu/seat");
 		return ViewRef.MNG_DEFAULT;
-	}
-	
-	
-	
+	}		
+
+
 	// 자유게시판
 	@RequestMapping(value="/board", method = RequestMethod.GET)
 	public String board(Model model) {
@@ -81,9 +93,21 @@ public class MngController {
 	/* POST 로직 담당 */	
 	// 자리예약
 	@RequestMapping(value="/insSeat", method = RequestMethod.POST)
-	public String insSeat(SeatPARAM param, HttpSession hs) {
-//		param.setStd_no(SecurityUtils.getLoginStdPk(hs));
-		service.insSeat(param);
+	public String insSeat(SeatPARAM param) {
+        // param.setStd_no(SecurityUtils.getLoginStdPk(hs));
+		int select_result = service.checkSeat(param);		
+		if(select_result == 0) {
+			// 예약정보 없음
+			service.insSeat(param);
+		}else {
+			// 예약정보 있음			
+		}
+		return "redirect:/mng/seat";
+	}
+	@RequestMapping(value="/delSeat", method = RequestMethod.POST)
+	public String delSeat(SeatPARAM param, HttpSession hs) {
+		param.setStd_no(SecurityUtils.getLoginStdPk(hs));
+		service.delSeat(param);
 		return "redirect:/mng/seat";
 	}
 }

@@ -52,9 +52,8 @@
           </form>
         </div>
         <div id="footer">
-          <div class="footer_menu"><a>Policies</a></div>
-          <div class="footer_menu"><a>Privacy</a></div>
-          <div class="footer_menu"><a>Help</a></div>
+          <div class="footer_menu"><a href="/user/policy">Policies</a></div>
+          <div class="footer_menu"><a href='/user/privacy'>Privacy</a></div>
         </div>
       </div>
     </div>

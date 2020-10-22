@@ -14,6 +14,17 @@
 		(#{prof_no}, #{prof_id}, #{prof_pw}, #{salt}, #{prof_nm}, #{major_no}, #{course_no}, #{prof_birth}, #{prof_email}, #{prof_phone}, #{prof_addr}, #{prof_zip})		
 	</insert>
 	
+	<select id="selStudentNo" parameterType="StdPARAM" resultType="StdDMI">
+		SELECT std_no
+		FROM t_student
+		WHERE std_no = #{std_no};
+	</select>
+	<select id="selProfNo" parameterType="profPARAM" resultType="ProfDMI">
+		SELECT prof_no
+		FROM t_professor
+		WHERE prof_no = #{prof_no};
+	</select>
+	
 	<select id="selStudent" parameterType="StdPARAM" resultType="StdDMI">
 		SELECT i_std, std_no, std_id, std_pw, salt, std_nm, A.major_no, A.course_no, B.major_nm, B.course_nm, std_birth, std_email, std_phone, std_addr, std_zip
 		FROM t_student A

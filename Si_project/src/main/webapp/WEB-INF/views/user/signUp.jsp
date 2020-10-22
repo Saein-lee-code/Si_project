@@ -9,6 +9,8 @@
     <link rel="icon" href="/res/img/logo_title.jpg" type="image/jpg" />
     <link rel="stylesheet" href="/res/css/common.css" />
     <link rel="stylesheet" href="/res/css/user/signUp.css" />
+    <link rel="stylesheet" href="/res/css/mng/mng_home.css" />
+    
     <!-- font -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
   </head>
@@ -32,8 +34,10 @@
             <div class="imgcontainer">
               <h2 class="hidden">회원가입 - 학생</h2>
               <div class="noWrap">
+              	 <div id="noChkResult" class="msg"></div>      
                 <label class="signUp_label" for="std_no">학생 번호</label>
-                <input type="text" id="std_no" name="std_no" value=""><br />
+                <input type="text" id="std_no" name="std_no" value="">
+                <button id="no_btn" type="button" onclick="chkNoStd()">가입 확인</button>
               </div>
 
               <div class="idWrap">
@@ -123,8 +127,10 @@
             <div class="imgcontainer">
               <h2 class="hidden">회원가입 - 교수</h2>
               <div class="noWrap">
+                <div id="noChkResult2" class="msg"></div>
                 <label class="signUp_label" for="prof_no">교수 번호</label>
-                <input type="text" id="prof_no" name="prof_no" value=""><br />
+                <input type="text" id="prof_no" name="prof_no" value="">
+                <button id="profno_btn" type="button" onclick="chkNoProf()">가입 확인</button>                
               </div>
 
               <div class="idWrap">
@@ -204,8 +210,19 @@
             </div>
           </form>
         </div>
-
+	
     </div><!-- signupContainer -->
+    <!-- footer -->
+    <div class="footer">
+      <div class="footer_logo">
+        <a href="/user/login"><img class="logo footer_logo" src="/res/img/logo.png" alt="logo"/></a>
+      </div>
+        <div class="footer_info">
+          <span id="uni_style">SI UNIVERSITY</span>
+          <span>대구광역시 중구 성내1동 중앙대로 366 9층, 10층</span>
+          <span>2020. All rights reserved.</span>
+        </div>
+     </div>
 
     <!-- script -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

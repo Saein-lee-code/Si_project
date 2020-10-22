@@ -12,7 +12,7 @@
 		<label for="radio_prof">교수</label>
 	</div>
 	<div class="formWrapper">
-		<form id="findPwForm1" action="/user/checkStdPw" method="post">
+		<form id="findPwForm1" action="/user/checkStdPw" method="post" onsubmit="return chkPwFormStd()">
 		    <h1>비밀번호 찾기</h1>
 		    <p>비밀번호는 이름, 가입한 아이디, 이메일을 통해 찾으실 수 있습니다.</p>
 		    <div class="msg">${ data.msg }</div>		    
@@ -27,7 +27,7 @@
 		    <input type="submit" value="확인">
 		</form>
 		
-		<form id="findPwForm2" action="/user/checkProfPw" method="post" style="display:none;">
+		<form id="findPwForm2" action="/user/checkProfPw" method="post" style="display:none;" onsubmit="return chkPwFormProf()">
 		    <h1>비밀번호 찾기</h1>
 		    <p>비밀번호는 이름, 가입한 아이디, 이메일을 통해 찾으실 수 있습니다.</p>
 		    <label for="prof_nm"></label>

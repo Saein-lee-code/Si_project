@@ -1,0 +1,60 @@
+@charset "UTF-8";
+.privacyContainer{
+	width:1200px;
+	margin: 80px auto;
+	position: relative;
+	border: 5px groove darkgrey;
+}
+
+.privacyContainer .logo{
+	position: relative;
+    left: 30px;
+}
+
+
+.privacyContainer .title{
+	font-size: 3rem;
+	position: absolute;
+	text-align: center;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+	top: 10px;
+    right: 50px;
+}
+.privacyContainer .shadow{
+	text-shadow: 4px 4px 5px lightgrey;
+}
+
+.privacyContent{
+	padding: 0 50px;
+	margin-top: 50px; 
+	font-size: 1rem;
+}
+
+.privacyContainer h2{
+	font-size: 2rem;
+    border-bottom: 3px dotted lightgrey;    
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.privacyContainer ul{
+	padding-left: 100px;	
+}
+.privacyContainer ul li{
+	padding-bottom: 8px;
+}
+
+.btnContainer{
+	text-align: center;
+    margin-bottom: 80px;
+    margin-top: 130px;
+}
+#backBtn{
+    padding: 10px 30px;
+    border: none;
+    background: brown;
+    color: white;
+    font-size: 1rem;
+    border-radius: 5%;
+    cursor:pointer;
+}

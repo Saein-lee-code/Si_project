@@ -12,6 +12,16 @@
 		FROM t_student A
 		LEFT JOIN t_seat B
 		ON A.std_no = B.std_no
-		WHERE A.std_no = #{std_no};
+		WHERE A.std_no = #{std_no} and B.is_booked = 'y'; 
 	</select>
+	
+	<select id="selAllSeat" parameterType="SeatPARAM" resultType="SeatDMI">
+		SELECT seat_info
+		FROM t_seat
+		WHERE is_booked = 'y';		
+	</select>
+	
+	<update id="delSeat" parameterType="ProfPARAM">		
+		UPDATE t_seat SET is_booked = 'n' WHERE std_no = #{std_no} AND is_booked = 'y';
+	</update>
 </mapper>

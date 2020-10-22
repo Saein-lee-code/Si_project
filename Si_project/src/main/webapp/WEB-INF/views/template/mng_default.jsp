@@ -42,8 +42,13 @@
               <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="font-weight: bold;">&times;</a>
               <a href="/mng/notice">공지사항</a>
               <a href="/mng/timetable">시간표</a>
-              <a href="/user/mypage">마이페이지</a>
-              <a href="/mng/seat">열람실예약</a>
+              <a href="/user/mypage">마이페이지</a>              
+              <c:choose>
+            	<c:when test="${ loginUser.std_nm != null }">
+            		<a href="/mng/seat">열람실예약</a>	
+            	</c:when>	
+              </c:choose>     
+              
               <a href="/mng/board">자유게시판</a>
               <a href="/mng/market_board">장터</a>
               <a href="/mng/scholarship">장학금신청</a>
@@ -68,7 +73,7 @@
             </div>
          </div>
         <!-- js -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>                
     	<script src="/res/js/mng_js/mng_home.js"></script>
 	</div>
 </body>

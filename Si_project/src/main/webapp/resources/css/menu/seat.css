@@ -29,58 +29,62 @@
 
 /* 팝업 예약창*/
 .modal{
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  transition: .3s;
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	padding-top: 100px; /* Location of the box */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0,0,0); /* Fallback color */
+	background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+	transition: .3s;
 }
 
 /* Modal Content */
 .modal-content {
-  width: 800px;
-  height: 600px;
-  position: absolute;
-  top: calc(50% - 400px);
-  left: calc(50% - 400px);
-  background-color: #fefefe;
-  padding: 20px;
-  border: 1px solid #888;
+	width: 800px;
+	height: 600px;
+	position: absolute;
+	top: calc(50% - 400px);
+	left: calc(50% - 400px);
+	background-color: #fefefe;
+	padding: 20px;
+	border: 1px solid #888;
 }
 .modal-title{
-  text-align: center;
-  font-size: 1.5rem;
-  margin-bottom: 20px;
+	text-align: center;
+	font-size: 1.5rem;
+	margin-bottom: 20px;
 }
 
 /* 좌석 배치 */
 .seatContainer{
-  margin: 0 auto;
-  padding: 0 100px;
+	margin: 0 auto;
+	padding: 0 100px;
 }
 #seat1{
-  /* width: 600px; */
-  height: 300px;
-  border: 2px solid lightgrey;
-  margin-bottom: 40px;
-  padding: 20px;
+	/* width: 600px; */
+	height: 300px;
+	border: 2px solid lightgrey;
+	margin-bottom: 40px;
+	padding: 20px;
 }
 #seat1 .seat{
-  width: 8%;
+	width: 8%;
+	border: 1px dotted lightblue;
+	border-radius: 5%;
+	background: white;
+	cursor: pointer;
 }
-#seat2{
-  width: 600px;
-  height: 300px;
-  border: 1px solid black;
-  margin-bottom: 40px;
+#seat1 .seat:hover{
+	background: indianred;
+	font-weight: bold;
+	color:white;
 }
+
 @import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&subset=devanagari,latin-ext');
 /* 체크박스 지우기 */
 [type="checkbox"]:checked,
@@ -99,13 +103,10 @@
   height: 30px;
 }
 
-.clicked {
-    background-color: red;
-    color: white;
-}
+
 /* 예약하기 버튼 + 설명 */
 .btnBtn{ border: none; padding: 15px; position: relative;
-    top: 20px; cursor: pointer;
+    top: 0px; cursor: pointer;
     font-size: 0.9rem;
     border-radius: 10%;
     background: cadetblue;
@@ -153,6 +154,9 @@
 	transition: .3s;
 }
 
+.selected_info{
+	
+}
 
 /* footer */
 .footer{
@@ -164,4 +168,10 @@
 	.mainContainer {
 	    height: auto;
 	}
+}
+
+#seat1 .clicked {
+    background: indianred;
+	font-weight: bold;
+	color:white;
 }

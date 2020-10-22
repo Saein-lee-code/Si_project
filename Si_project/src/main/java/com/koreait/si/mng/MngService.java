@@ -1,6 +1,9 @@
 package com.koreait.si.mng;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,24 +18,35 @@ public class MngService {
 	
 	// 좌석예약
 	public int insSeat(SeatPARAM param) {
-		System.out.println("번호확인 --" + param.getStd_no());
-		System.out.println("자리확인--" + param.getSeat_info());
+//		System.out.println("번호확인 --" + param.getStd_no());
+//		System.out.println("자리확인--" + param.getSeat_info());
 		return mngMapper.insSeat(param);
 	}
+	// 예약된 모든좌석 보기
+	public List<SeatDMI> selAllSeat(SeatPARAM seat_param) {		
+		List<SeatDMI> list = mngMapper.selAllSeat(seat_param);
+		return list;		
+	}
+	
 	// 예약확인
 	public int checkSeat(SeatPARAM param) {
-		if(param.getStd_no() != 0) {
-			SeatDMI dbSeat = mngMapper.selSeat(param);
-//			dbSeat.setStd_no(param.getStd_no());
-			
+		SeatDMI dbSeat = mngMapper.selSeat(param);			
+
+		if(dbSeat != null) {			
+			System.out.println("dbSEAT === " + dbSeat);
 			param.setStd_nm(dbSeat.getStd_nm());
 			param.setI_seat(dbSeat.getI_seat());
 			param.setStd_no(dbSeat.getStd_no());
 			param.setSeat_info(dbSeat.getSeat_info());		
 			param.setS_dt(dbSeat.getS_dt());
 			param.setO_dt(dbSeat.getO_dt());
-			return Const.SUCCESS;
+			return Const.SUCCESS;							
 		}
-		return 0;
+		return Const.FAIL;
 	}
+	
+	public int delSeat(SeatPARAM param) {		
+		return mngMapper.delSeat(param);		
+	}
+	
 }

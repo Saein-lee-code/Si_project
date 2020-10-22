@@ -6,9 +6,17 @@
 <!-- 좌석예약 -->
 <div class="chooseContainer">		
 	<h1 class="hidden">열람실예약</h1>
-	<div class="btnContainer">
-		<a id="btn_show" class="btn" style="margin-right: 30px;">조회</a>
-		<a id="btn1" class="btn">예약하기</a>            
+	<div class="btnContainer">				
+		<c:choose>
+			<c:when test="${ isBooked == 0 }">
+				<a id="btn_show" class="btn" style="margin-right: 30px;">조회</a>				
+				<a id="btn1" class="btn">예약하기</a>	
+			</c:when>			
+			<c:when test="${ isBooked == 1 }">
+				<a id="btn_show" class="btn" style="margin-right: 30px;">조회</a>
+				<a id="btn1" class="btn" style="display:none;">예약하기</a>	
+			</c:when>
+		</c:choose>		            
 	</div>
 </div>
 
@@ -24,7 +32,7 @@
 					</c:when>
 					<c:when test="${ data.seat_info != null }">
 						<div id="showBooking"  style="display:block;">
-							<form id="delSeat" action="/menu/delSeat" method="post">
+							<form id="delSeat" action="/mng/delSeat" method="post">
 								<table id="seat_table"> 
 									<tr>
 										<th>예약자</th>
@@ -60,9 +68,14 @@
 <div class="modal-content">
   <h2 class="modal-title">예약하기</h2>
   <div class="seatContainer">
-    <div id="seat1"></div>
+    <div id="seat1">
+    	<c:forEach items="${list}" var="val">
+    		<input type="hidden" class="selected_info" value="${ val.seat_info }">
+    	</c:forEach>
+    	
+    </div>
     
-    <form id="booking" action="/mng/insSeat" method="post">
+    <form id="booking" action="/mng/insSeat" method="post" onclick="return bookBtnClick()">
     	<input type="hidden" name="std_no" value="${ loginUser.std_no }">
       	<input type="hidden" id="seat_info" name="seat_info" value="">
          <input type="submit" class="float-right btnBtn" id="bookBtn" value="예약하기">

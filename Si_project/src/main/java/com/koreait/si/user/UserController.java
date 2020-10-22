@@ -35,6 +35,18 @@ public class UserController {
 		return "redirect:/user/login";
 	}
 	
+	// policy
+	@RequestMapping(value="/policy", method=RequestMethod.GET)
+	public String policy(Model model) {
+		model.addAttribute(Const.VIEW, "user/policy");
+		return ViewRef.TEMP_DEFAULT;
+	}
+	// privacy
+	@RequestMapping(value="/privacy", method=RequestMethod.GET)
+	public String privacy(Model model) {
+		model.addAttribute(Const.VIEW, "user/privacy");
+		return ViewRef.TEMP_DEFAULT;
+	}
 	// 회원가입
 	@RequestMapping(value="/signup", method=RequestMethod.GET)
 	public String signup(Model model) {
@@ -167,8 +179,14 @@ public class UserController {
 		
 		return "redirect:/user/signup";
 	}
-	
-	// id 중복체크 - stdudent Id
+	// no 중복체크 학생
+	@RequestMapping(value="/ajaxNoChkStd", method=RequestMethod.POST)
+	@ResponseBody
+	public String ajaxNoChkStd(@RequestBody StdPARAM std_param) {
+		int std_result = service.checkStdNo(std_param); // 2: 가입가능 3: 가입 불가능
+		return String.valueOf(std_result);
+	}
+	// id 중복체크 학생
 	@RequestMapping(value="/ajaxIdChkStd", method=RequestMethod.POST)
 	@ResponseBody
 	public String ajaxIdChkStd(@RequestBody StdPARAM std_param) {	
@@ -176,12 +194,24 @@ public class UserController {
 		return String.valueOf(std_result);
 	}
 	
+	// no 중복체크 교수 
+	@RequestMapping(value="/ajaxNoChkProf", method=RequestMethod.POST)
+	@ResponseBody
+	public String ajaxNoChkProf(@RequestBody ProfPARAM prof_param) {
+		int prof_result = service.checkProfNo(prof_param); // 2: 가입가능 3: 가입 불가능
+		return String.valueOf(prof_result);
+	}
+	
+	
+	// id 중복체크 교수
 	@RequestMapping(value="/ajaxIdChkProf", method=RequestMethod.POST)
 	@ResponseBody
 	public String ajaxIdChkProf(@RequestBody ProfPARAM prof_param) {
 		int prof_result = service.loginProf(prof_param);
 		return String.valueOf(prof_result);
 	}
+	
+	
 	/* 아이디찾기 ajax */
 	// 학생
 	@RequestMapping(value="/ajaxFindIdStd", method=RequestMethod.POST)
@@ -211,7 +241,7 @@ public class UserController {
 			return "redirect:/user/chgStdPw";
 		}else if(std_result == 2) {
 			// 2: 정보없음 msg => 정보를 다시 확인해주세요
-			msg = "입력하신 정보를 다시 확인해 주세요.";
+			msg = "회원 정보를 찾을 수 없습니다. 다시 확인해 주세요.";
 			std_param.setMsg(msg);
 			ra.addFlashAttribute("data", std_param);
 		}
@@ -236,7 +266,7 @@ public class UserController {
 			return "redirect:/user/chgProfPw";
 		}else if(prof_result == 2) {
 			// 2: 정보없음 msg => 정보를 다시 확인해주세요
-			msg = "입력하신 정보를 다시 확인해 주세요.";
+			msg = "회원 정보를 찾을 수 없습니다. 다시 확인해 주세요.";
 			prof_param.setMsg(msg);
 			ra.addFlashAttribute("data", prof_param);
 		}

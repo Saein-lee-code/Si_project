@@ -180,5 +180,20 @@ public class UserService {
 		prof_param.setProf_email(dbStd.getProf_email());
 		
 		return Const.SUCCESS;	
+	}
+
+	public int checkStdNo(StdPARAM std_param) {
+		StdDMI dbStd = userMapper.selStudentNo(std_param);		
+		if(dbStd == null) { return Const.NO_ID; }
+		std_param.setStd_no(dbStd.getStd_no());
+		return Const.SUCCESS;
+	}
+
+	public int checkProfNo(ProfPARAM prof_param) {
+		ProfDMI dbProf = userMapper.selProfNo(prof_param);
+		if(dbProf == null) { return Const.NO_ID; }
+		prof_param.setProf_no(dbProf.getProf_no());
+		return Const.SUCCESS;
 	}	
+	
 }

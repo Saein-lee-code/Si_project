@@ -18,6 +18,9 @@ public interface UserMapper {
 	// 비밀번호 찾기 위한 select 문 (id, name, email)
 	StdDMI findStdPw(StdPARAM std_param); 
 	ProfDMI findProfPw(ProfPARAM prof_param);
+	// 가입할때 번호 확인용
+	StdDMI selStudentNo(StdPARAM std_param);
+	ProfDMI selProfNo(ProfPARAM prof_param);
 
 
 	
