@@ -94,8 +94,8 @@
 	var scrollTop = $(document).scrollTop();
 	if (scrollTop < 180) {
 		scrollTop = 0;
-	}else if(scrollTop > 1500){
-		scrollTop = 1505;
+	}else if(scrollTop > 1800){
+		scrollTop = 1800;
 	}
 	
 	$("#quick_menu").stop();
