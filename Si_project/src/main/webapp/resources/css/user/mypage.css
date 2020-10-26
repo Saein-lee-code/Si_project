@@ -1,10 +1,11 @@
 @charset "UTF-8";
 
 .mypageContainer{
-  width: 1200px;
-  margin: 0 auto;
-  position: relative;
-  height: 720px;
+	width: 1200px;
+	margin: 0 auto;
+	position: relative;
+	height: 1000px;
+	top: 130px;
 }
 .mypageContainer h1{
 	text-align: center;
@@ -13,9 +14,10 @@
 	border-collapse: collapse;
 	width: 600px;
 	margin: 40px auto 0;
-	border-top: 1px solid black;
-	border-bottom: 1px solid black;
+    border-top: 8px double grey;
+    border-bottom: 8px double grey;
 }
+
 #mypageTable th{
 	width: 200px;
 	text-align: right;
@@ -29,8 +31,7 @@
 }
 
 #mypageTable th, td{
-	padding: 10px;
-	padding: 10px 20px 10px 10px;
+	padding: 20px;
 }
 
 .chgPwBtn{

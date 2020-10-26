@@ -1,10 +1,11 @@
 @charset "UTF-8";
 
-
 .chooseContainer {
-  width: 1200px;
-  margin: 0 auto;
-  height: 700px;
+	width: 1200px;
+	margin: 0 auto;
+	height: 750px;
+	position: relative;
+	top: 80px;
 }
 
 .btnContainer{

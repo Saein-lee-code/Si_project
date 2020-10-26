@@ -3,12 +3,36 @@ html, body{ width: 100%; height: 100%; }
 
 .homeContainer{
 	width: 100%;
-	height: 3000px;
-	background: snow;	
+    height: 2940px;
+	background: white;	
 	overflow: hidden;
 }
+/* home nav container */
+.homeNavContainer{
+	top: 30px;
+	left: calc(50% - 16px);
+	position: fixed;	  
+	width: 100%;
+	z-index: 9999;
+}
+.homeNavContainer a{
+	color: white;
+	margin: 0 10px;	
+}
+.homeNavContainer span{ font-size: 0.9rem; }
+#first-content { color: #948b7b; } 
+.scrollContent{
+	scroll-behavior: smooth; 
+ 	overflow-y: scroll;
+ 	overflow: hidden;
+ 	display: block;
+}
+
+/* video container */
 .videoContainer{
 	position: relative;
+    top: 80px;
+    height: 206px;
 }
 #myVideo {
 	position: absolute;	
@@ -22,7 +46,6 @@ html, body{ width: 100%; height: 100%; }
 	color: #f1f1f1;
 	padding: 20px 80px;
     width: calc(100% - 40px);
-    top:0;
 }
 
 #myBtn {
@@ -41,6 +64,161 @@ html, body{ width: 100%; height: 100%; }
   color: black;
 }
 
+/* second container */
+.secondContainer{
+	width: 100%;
+	height: 893px;
+	background: white;
+	position: relative;
+    top: 846px;
+    box-sizing: content-box;    
+}
+.focus-start{
+	width: 100%;
+	height: 80px;
+	background: #c5b2b2;
+}
+
+.focus-middle{
+	height: 60px;
+	position: absolute;
+	width: 100%;
+	top: 10px;	
+	background: brown;
+}
+.secondContainer h2{
+	text-align: center;    
+    text-transform: uppercase;
+    font-size: 2.8rem;
+    font-weight: bold;
+    font-family: 'Anton', sans-serif;
+	letter-spacing: 15px;
+	margin: 50px 0;	
+}
+
+/* 내용 */
+.secondContent{
+	width: 1200px;
+	height: 380px;	
+	margin: 0 auto;
+}
+.secondContent h3{
+	text-overflow: ellipsis;
+	white-space: nowrap;
+    overflow: hidden;
+    font-size: 2rem;
+    height: 38px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+/* 내용 */
+.secondContent span{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 343px;
+    margin-right: 0;
+    display: block;
+}
+.secondContent .next-line{
+	width: 280px;
+    text-indent: 29px;
+}
+.secondContent .content-img{
+	width: 350px;
+	margin-right: 20px;
+	transform: scale(1);
+	overflow: hidden;
+	float: left;
+}
+.secondContent .content-img img{
+	width: 350px;
+	transition: 1.8s;
+	cursor: pointer;
+}
+.secondContent img:hover{
+	transform:scale(1.1);
+}
+/* contnetContent 2 */
+.secondContent2{
+	height: 100px;
+	width: 100%;
+	background: #543030;
+}
+.secondContent2 a{
+	color: white;
+}
+.secondContent2 ul{
+	text-align: center;
+	width: 100%;
+    line-height: 70px;
+}
+.secondContent2 li {
+    display: inline-block;
+    position: relative;
+    padding: 13px;
+    width: 16%;
+    text-align: center;
+    vertical-align: top;
+    box-sizing: border-box;
+	font-size: 0.9rem;
+	line-height: 70px;	
+}
+
+.secondContent2 li:after {
+    position: absolute;
+    top: 42px;
+    content: '';
+    right: 0;
+    width: 1px;
+    height: 14px;
+    background: #beac86;
+}
+
+
+/* third container*/
+.thirdContainer{
+	width: 100%;
+	height: 900px;
+	background: white;
+	position: relative;
+	top: 846px;
+}
+
+.thirdContainer h2{
+	text-align: center;    
+    text-transform: uppercase;
+    font-size: 2.8rem;
+    font-weight: bold;
+    font-family: 'Anton', sans-serif;
+	letter-spacing: 15px;
+	margin: 50px 0;	
+}
+
+
+.thirdContainer .coronaNews{
+	width: 100%;
+	padding: 50px 0;
+	background: #990000;
+	color: white;
+	font-weight: bold;
+	text-align: center;
+	font-size: 2rem;
+	border: 10px double white;
+    border-right: 0;
+    border-left: 0;	
+	margin-bottom: 80px;
+}
+
+.thirdContainer .coronaNews_date{
+	margin-top: 10px;
+	color: white;
+	font-size: 1.4rem;
+}
+/* Quick Menu */
 #quick_menu{
 	position:absolute; 
 	top:560px; right: 0; 
@@ -51,10 +229,24 @@ html, body{ width: 100%; height: 100%; }
     box-shadow: 5px 2px 5px #6c6c6c;
 }
 #quick_menu:hover{
-	border: 3px solid #FFD800;
+	border: 2px solid yellow;
 }
 #quick_menu img{
 	width:200px;
 	margin-top: 12px;
 	cursor:pointer;
+}
+
+/* Slide */
+.splide__list{
+	background: white;
+	height: 300px;	
+}
+.splide_slide{
+	color: white;
+}
+.slide_img img{
+	width: 1687px !important;
+	position: relative !important;
+    top: -340px !important;
 }

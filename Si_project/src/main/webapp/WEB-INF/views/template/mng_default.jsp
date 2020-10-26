@@ -19,7 +19,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="mainContainer">
+    <div class="mainContainer scrollContet" >
     	<div class="navContainer">
         <nav>
           <span style="font-size:30px;cursor:pointer" id="menu_bar" onclick="openNav()">&#9776;</span>

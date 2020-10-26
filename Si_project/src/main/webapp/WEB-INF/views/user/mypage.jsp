@@ -138,7 +138,7 @@
           	</tr>
           	<tr>
           		<th rowspan="2"></th>
-          		<td style="border-bottom: 1px solid black; ">
+          		<td style="border-bottom: 8px double grey;">
           			<c:choose>         		
 		          		<c:when test="${( loginUser.i_std != 0 ) && ( loginUser.i_prof == 0 )}">
 		          			${ loginUser.std_zip }

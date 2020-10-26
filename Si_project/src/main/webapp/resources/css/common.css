@@ -29,7 +29,7 @@ body{ font-family: 'Noto Sans KR', sans-serif; }
 
 .mainContainer{
   width: 100%;
-  height: 950px;
+  /*height: 950px; */
   position: relative;  
 }
 
@@ -43,6 +43,15 @@ body{ font-family: 'Noto Sans KR', sans-serif; }
 .navContainer{
   height: 80px;
   background: #990000;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+}
+.scrollContent{
+	scroll-behavior: smooth; 
+ 	overflow-y: scroll;
+ 	display: block; 	
 }
 /*어서오세요*/
 .greeting{
@@ -172,10 +181,10 @@ body{ font-family: 'Noto Sans KR', sans-serif; }
  }
 
  .footer_info #uni_style{
-   font-size: 2rem;
+   font-size: 2.5rem;
    font-weight: bold;
    letter-spacing: 8px;
-   padding-bottom: 10px;
+   padding-bottom: 20px;
  }
  
 
