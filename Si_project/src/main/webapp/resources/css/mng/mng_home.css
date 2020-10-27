@@ -20,7 +20,9 @@ html, body{ width: 100%; height: 100%; }
 	margin: 0 10px;	
 }
 .homeNavContainer span{ font-size: 0.9rem; }
+
 #first-content { color: #948b7b; } 
+
 .scrollContent{
 	scroll-behavior: smooth; 
  	overflow-y: scroll;

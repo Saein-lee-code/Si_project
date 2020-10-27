@@ -6,10 +6,17 @@
     left: calc(50% - 700px);
 }
 
+
+#firstImg{
+    position: absolute;
+    top: -290px;
+    left: calc(50% - 400px);
+}
+
 .timetableContainer h1{
-    width: 100%;
+	width: 100%;
     text-align: center;
-    margin-top: 160px;
+    margin-top: 400px;
 }
 
 /* table */

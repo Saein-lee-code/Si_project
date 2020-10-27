@@ -4,6 +4,7 @@
   height: 950px;
   margin: 0 auto;
   position: relative;
+  top: 120px;
 }
 
 .noticeContainer .table{

@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="/res/css/common.css" />
 <link rel="stylesheet" href="/res/css/menu/menu_timetable.css" />
 <div class="timetableContainer">
+<img id="firstImg" src="/res/img/timetable_pic.jpeg" alt="수강신청"/>
 	<h1>시간표</h1>
 	<table>
 		<thead>
